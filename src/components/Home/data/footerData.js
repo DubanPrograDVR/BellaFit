@@ -1,12 +1,18 @@
+import {
+  faInstagram,
+  faFacebook,
+  faTiktok,
+} from "@fortawesome/free-brands-svg-icons";
+
 export const footerData = {
   about: {
     title: "BellaFit",
     description:
       "Centro de Bungee Fitness y Bienestar dedicado a transformar vidas a través del movimiento y la nutrición consciente.",
     social: [
-      { label: "Instagram", icon: "📷", href: "#" },
-      { label: "Facebook", icon: "📘", href: "#" },
-      { label: "TikTok", icon: "🎵", href: "#" },
+      { label: "Instagram", icon: faInstagram, href: "#" },
+      { label: "Facebook", icon: faFacebook, href: "#" },
+      { label: "TikTok", icon: faTiktok, href: "#" },
     ],
   },
   servicios: [
@@ -28,5 +34,6 @@ export const footerData = {
     email: "✉️ hola@bellafit.cl",
     horarios: "🕐 Lun - Vie: 7:00 - 21:00, Sáb: 9:00 - 14:00",
   },
-  copyright: "© 2026 BellaFit. Todos los derechos reservados. Diseñado con ♡ para transformar vidas.",
+  copyright:
+    "© 2026 BellaFit. Todos los derechos reservados. Diseñado con ♡ para transformar vidas.",
 };

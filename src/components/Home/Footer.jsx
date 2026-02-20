@@ -1,5 +1,6 @@
 import "./styles/Footer.css";
 import { footerData } from "./data/footerData";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Footer = () => {
   return (
@@ -13,7 +14,7 @@ const Footer = () => {
             <div className="social-links">
               {footerData.about.social.map((social, index) => (
                 <a key={index} href={social.href} aria-label={social.label}>
-                  {social.icon}
+                  <FontAwesomeIcon icon={social.icon} />
                 </a>
               ))}
             </div>
