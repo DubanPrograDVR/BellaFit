@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-rose: #e8b4b8;
+  --soft-pink: #f4e4e6;
+  --accent-gold: #d4a574;
+  --deep-rose: #c89099;
+  --cream: #faf8f6;
+  --charcoal: #2c2c2c;
+  --light-grey: #f0eeec;
+  --shadow-subtle: rgba(200, 144, 153, 0.15);
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: var(--charcoal);
+  background: var(--cream);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
