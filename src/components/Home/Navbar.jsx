@@ -1,6 +1,8 @@
 import "./styles/Navbar.css";
+import { elementos_navbar } from "./data/navbarData";
 
 const Navbar = () => {
+
   return (
     <>
       <nav className="navbar">
@@ -9,26 +11,13 @@ const Navbar = () => {
             BELLAFIT
           </a>
           <ul className="nav-links">
-            <li>
-              <a href="#clases">Clases</a>
-            </li>
-            <li>
-              <a href="#tienda">Tienda</a>
-            </li>
-            <li>
-              <a href="#formaciones">Formaciones</a>
-            </li>
-            <li>
-              <a href="#nutricion">Nutrición</a>
-            </li>
-            <li>
-              <a href="#contacto">Contacto</a>
-            </li>
-            <li>
-              <a href="/login" className="btn-login">
-                Iniciar Sesión
-              </a>
-            </li>
+            {elementos_navbar.map((item, index) => (
+              <li key={index}>
+                <a href={item.enlace} className={item.clase || ""}>
+                  {item.nombre}
+                </a>
+              </li>
+            ))}
           </ul>
           <div className="menu-toggle">
             <span></span>
