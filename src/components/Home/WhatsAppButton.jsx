@@ -3,7 +3,7 @@ const WhatsAppButton = () => {
     <>
       <a
         href="https://wa.me/56XXXXXXXXX"
-        class="whatsapp-float"
+        className="whatsapp-float"
         target="_blank"
         aria-label="WhatsApp">
         💬
