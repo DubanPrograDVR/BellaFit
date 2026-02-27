@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="footer-content">
           {/* About Section */}
           <div className="footer-section">
-            <h3>{footerData.about.title}</h3>
+            <img src="/sublogo.png" alt="BellaFit" className="footer-logo" />
             <p>{footerData.about.description}</p>
             <div className="social-links">
               {footerData.about.social.map((social, index) => (

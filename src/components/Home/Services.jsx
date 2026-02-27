@@ -6,6 +6,10 @@ const Services = () => {
   return (
     <>
       <section className="services" id="clases">
+        <img src="././" alt="" />
+        <div className="services-watermark">
+          <img src="/logo.png" alt="" aria-hidden="true" />
+        </div>
         <div className="section-header">
           <p className="section-subtitle">{servicesData.header.subtitle}</p>
           <h2 className="section-title">{servicesData.header.title}</h2>

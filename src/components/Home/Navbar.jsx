@@ -2,14 +2,15 @@ import "./styles/Navbar.css";
 import { elementos_navbar } from "./data/navbarData";
 
 const Navbar = () => {
-
   return (
     <>
       <nav className="navbar">
-        <div className="nav-container">
+        <div className="logo-wrapper">
           <a href="/" className="logo">
-            BELLAFIT
+            <img src="/logo.png" alt="BellaFit" className="logo-img" />
           </a>
+        </div>
+        <div className="nav-container">
           <ul className="nav-links">
             {elementos_navbar.map((item, index) => (
               <li key={index}>
