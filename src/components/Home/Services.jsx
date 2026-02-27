@@ -1,39 +1,45 @@
 import "./styles/Services.css";
 import { servicesData } from "./data/servicesData";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Services = () => {
   return (
-    <>
-      <section className="services" id="clases">
-        <img src="././" alt="" />
-        <div className="services-watermark">
-          <img src="/logo.png" alt="" aria-hidden="true" />
-        </div>
-        <div className="section-header">
-          <p className="section-subtitle">{servicesData.header.subtitle}</p>
-          <h2 className="section-title">{servicesData.header.title}</h2>
-          <p className="section-description">
-            {servicesData.header.description}
-          </p>
-        </div>
+    <section className="sv" id="clases">
+      <div className="sv-header">
+        <p className="sv-eyebrow">
+          <span className="sv-eyebrow-line"></span>
+          {servicesData.header.subtitle}
+          <span className="sv-eyebrow-line"></span>
+        </p>
+        <h2 className="sv-title">
+          {servicesData.header.title}
+          <br />
+          <span className="sv-title-accent">
+            {servicesData.header.titleAccent}
+          </span>
+        </h2>
+      </div>
 
-        <div className="services-grid">
-          {servicesData.services.map((service, index) => (
-            <div key={index} className="service-card">
-              <div className="service-icon">
-                <FontAwesomeIcon icon={service.icon} />
+      <div className="sv-grid">
+        {servicesData.services.map((service, index) => (
+          <div key={index} className="sv-card">
+            <div className="sv-card-icon-area">
+              <div className="sv-card-icon-circle">
+                <span className="sv-card-emoji">{service.emoji}</span>
               </div>
-              <h3 className="service-title">{service.title}</h3>
-              <p className="service-description">{service.description}</p>
-              <a href={service.link} className="service-link">
-                {service.linkText}
+            </div>
+            <div className="sv-card-body">
+              <span className="sv-card-badge">{service.badge}</span>
+              <h3 className="sv-card-title">{service.title}</h3>
+              <p className="sv-card-desc">{service.description}</p>
+              <div className="sv-card-divider"></div>
+              <a href={service.link} className="sv-card-link">
+                {service.linkText} <span className="sv-card-arrow">→</span>
               </a>
             </div>
-          ))}
-        </div>
-      </section>
-    </>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 

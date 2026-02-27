@@ -1,67 +1,63 @@
-import {
-  faDumbbell,
-  faLaptop,
-  faBagShopping,
-  faBook,
-  faCarrot,
-  faCake,
-} from "@fortawesome/free-solid-svg-icons";
-
 export const servicesData = {
   header: {
-    subtitle: "NUESTROS SERVICIOS",
-    title: "Descubre Tu Camino al Bienestar",
-    description:
-      "Ofrecemos una variedad de disciplinas diseñadas para transformar tu cuerpo y mente, adaptadas a todos los niveles.",
+    subtitle: "Nuestros Servicios",
+    title: "Todo lo que necesitas",
+    titleAccent: "en un solo lugar",
   },
   services: [
     {
-      icon: faDumbbell,
+      emoji: "🤸‍♀️",
+      badge: "PRESENCIAL",
       title: "Clases Presenciales",
       description:
         "Bungee Fitness, Jumping Fitness, Pilates, Yoga y Zumba. Entrena con energía en nuestro estudio equipado.",
       link: "#clases-presenciales",
-      linkText: "Ver horarios →",
+      linkText: "Ver horarios",
     },
     {
-      icon: faLaptop,
+      emoji: "💻",
+      badge: "ONLINE",
       title: "Clases Online",
       description:
         "Accede a clases virtuales exclusivas con tu equipo oficial. Entrena desde donde estés.",
       link: "#clases-online",
-      linkText: "Más información →",
+      linkText: "Más información",
     },
     {
-      icon: faBagShopping,
+      emoji: "🛍️",
+      badge: "TIENDA",
       title: "Tienda",
       description:
         "Equipos oficiales, ropa deportiva, accesorios y suplementos. Todo lo que necesitas en un solo lugar.",
       link: "#tienda",
-      linkText: "Explorar tienda →",
+      linkText: "Explorar tienda",
     },
     {
-      icon: faBook,
+      emoji: "📚",
+      badge: "FORMACIÓN",
       title: "Formaciones",
       description:
         "Certifícate como instructora de Bungee Fitness. Modalidad presencial y online disponible.",
       link: "#formaciones",
-      linkText: "Inscríbete →",
+      linkText: "Inscríbete",
     },
     {
-      icon: faCarrot,
+      emoji: "🥗",
+      badge: "NUTRICIÓN",
       title: "Nutrición",
       description:
         "Consultas nutricionales personalizadas, presenciales y online, con planes alimentarios diseñados para ti.",
       link: "#nutricion",
-      linkText: "Agendar consulta →",
+      linkText: "Agendar consulta",
     },
     {
-      icon: faCake,
+      emoji: "🎉",
+      badge: "EVENTOS",
       title: "Fiestas Privadas",
       description:
         "Celebra momentos especiales con una experiencia única. Arrienda nuestro espacio para eventos.",
       link: "#fiestas",
-      linkText: "Solicitar información →",
+      linkText: "Solicitar información",
     },
   ],
 };

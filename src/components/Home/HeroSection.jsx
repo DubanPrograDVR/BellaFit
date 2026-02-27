@@ -37,6 +37,78 @@ const HeroSection = () => {
         </div>
         <div className="scroll-indicator"></div>
       </section>
+
+      {/* ─── Sección 1: Sobre BellaFit (imagen izq + texto der) ─── */}
+      <section className="intro-section">
+        <div className="intro-container">
+          <div className="intro-left">
+            <div className="intro-image-wrapper">
+              <div className="intro-image-bg"></div>
+              <img
+                src="/sublogo.png"
+                alt="BellaFit"
+                className="intro-image-watermark"
+              />
+              <p className="intro-image-caption">Bungee Fitness</p>
+            </div>
+          </div>
+          <div className="intro-right">
+            <p className="intro-label">
+              <span className="intro-label-line"></span>
+              SOBRE BELLAFIT
+            </p>
+            <h2 className="intro-title">
+              Donde el fitness
+              <br />
+              <span className="intro-title-accent">se vive diferente</span>
+            </h2>
+            <p className="intro-description">
+              BellaFit es un centro de entrenamiento y bienestar diseñado para
+              mujeres que buscan algo más que una rutina. Aquí encontrarás
+              disciplinas innovadoras como el <em>Bungee Fitness</em>, clases
+              grupales llenas de energía, formaciones profesionales y una tienda
+              con todo lo que necesitas para tu práctica.
+            </p>
+            <p className="intro-description">
+              También ofrecemos consultas de nutrición personalizadas y espacios
+              para eventos privados. Todo en un ambiente cálido, motivador y
+              pensado para ti.
+            </p>
+            <div className="intro-cta">
+              <a href="#clases" className="intro-btn-link">
+                Conoce nuestras clases <span className="arrow">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Sección 2: Estadísticas / Resultados ─── */}
+      <section className="stats-section">
+        <div className="stats-container">
+          <div className="stats-grid">
+            <div className="stats-item">
+              <span className="stats-number">500+</span>
+              <span className="stats-label">Alumnas Activas</span>
+            </div>
+            <div className="stats-divider"></div>
+            <div className="stats-item">
+              <span className="stats-number">8</span>
+              <span className="stats-label">Disciplinas Únicas</span>
+            </div>
+            <div className="stats-divider"></div>
+            <div className="stats-item">
+              <span className="stats-number">3+</span>
+              <span className="stats-label">Años de Experiencia</span>
+            </div>
+            <div className="stats-divider"></div>
+            <div className="stats-item">
+              <span className="stats-number">100%</span>
+              <span className="stats-label">Compromiso Contigo</span>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 };

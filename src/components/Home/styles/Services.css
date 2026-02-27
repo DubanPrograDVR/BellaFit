@@ -1,178 +1,283 @@
-/* Services Section */
-.services {
-  padding: 8rem 5%;
-  max-width: 1400px;
+/* ═══════════════════════════════════════════
+   Services Section — BellaFit Premium Cards
+   ═══════════════════════════════════════════ */
+
+.sv {
+  padding: 6rem 5%;
+  max-width: 1320px;
   margin: 0 auto;
-  position: relative;
-  overflow: hidden;
 }
 
-/* Watermark / Brand Identity */
-.services-watermark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
-  height: 500px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.services-watermark img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  opacity: 0.03;
-  filter: grayscale(100%);
-}
-
-.section-header {
+/* ─── Header ─── */
+.sv-header {
   text-align: center;
-  margin-bottom: 5rem;
-  position: relative;
-  z-index: 1;
+  margin-bottom: 4rem;
 }
 
-.section-subtitle {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.9rem;
-  color: var(--accent-gold);
+.sv-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
   letter-spacing: 5px;
-  margin-bottom: 1rem;
-  font-weight: 600;
   text-transform: uppercase;
+  color: #c9a96e;
+  margin-bottom: 1.2rem;
 }
 
-.section-title {
+.sv-eyebrow-line {
+  display: inline-block;
+  width: 32px;
+  height: 1.5px;
+  background: linear-gradient(90deg, #c9a96e, #d4a5a5);
+  border-radius: 2px;
+}
+
+.sv-title {
   font-family: "Cormorant Garamond", serif;
-  font-size: 3.5rem;
-  color: var(--deep-rose);
-  font-weight: 600;
-  margin-bottom: 1.5rem;
+  font-size: 3.2rem;
+  font-weight: 500;
+  color: #2c2020;
+  line-height: 1.15;
+  margin: 0;
 }
 
-.section-description {
-  font-family: "Lato", sans-serif;
-  font-size: 1.1rem;
-  color: var(--charcoal);
-  max-width: 700px;
-  margin: 0 auto;
-  font-weight: 300;
-  line-height: 1.7;
+.sv-title-accent {
+  font-style: italic;
+  color: #b87878;
+  font-weight: 400;
 }
 
-.services-grid {
+/* ─── Grid ─── */
+.sv-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;
-  position: relative;
-  z-index: 1;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
 
-.service-card {
-  background: white;
-  border-radius: 20px;
-  padding: 3rem 2rem;
-  text-align: center;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 5px 30px var(--shadow-subtle);
-  position: relative;
+/* ─── Card ─── */
+.sv-card {
+  background: #ffffff;
+  border-radius: 16px;
   overflow: hidden;
+  box-shadow: 0 4px 24px rgba(44, 32, 32, 0.06);
+  border-top: 2px solid transparent;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
-.service-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary-rose), var(--accent-gold));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
+.sv-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(44, 32, 32, 0.12);
+  border-top-color: #b87878;
 }
 
-.service-card:hover::before {
-  transform: scaleX(1);
+/* ─── Icon Area ─── */
+.sv-card-icon-area {
+  height: 160px;
+  background: linear-gradient(160deg, #f5eae4 0%, #edd8ce 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 50px rgba(200, 144, 153, 0.25);
-}
-
-.service-icon {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 2rem;
-  background: linear-gradient(135deg, var(--soft-pink), var(--primary-rose));
+.sv-card-icon-circle {
+  width: 72px;
+  height: 72px;
+  background: #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
-  color: var(--deep-rose);
-  transition: all 0.4s ease;
+  box-shadow: 0 4px 16px rgba(44, 32, 32, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.service-card:hover .service-icon {
-  transform: scale(1.1) rotate(5deg);
-  background: linear-gradient(135deg, var(--accent-gold), var(--deep-rose));
+.sv-card:hover .sv-card-icon-circle {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(44, 32, 32, 0.12);
 }
 
-.service-title {
-  font-family: "Cormorant Garamond", serif;
+.sv-card-emoji {
   font-size: 1.8rem;
-  color: var(--deep-rose);
-  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+/* ─── Card Body ─── */
+.sv-card-body {
+  padding: 1.6rem 1.8rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.sv-card-badge {
+  display: inline-block;
+  align-self: flex-start;
+  background: #f5eae4;
+  color: #b87878;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.6rem;
   font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
 }
 
-.service-description {
-  font-family: "Lato", sans-serif;
-  font-size: 0.95rem;
-  color: var(--charcoal);
-  margin-bottom: 1.5rem;
+.sv-card-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #2c2020;
+  margin: 0 0 0.8rem;
+  line-height: 1.3;
+}
+
+.sv-card-desc {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.78rem;
   font-weight: 300;
-  line-height: 1.7;
+  color: #8a7070;
+  line-height: 1.8;
+  margin: 0 0 1.2rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
 }
 
-.service-link {
+.sv-card-divider {
+  width: 100%;
+  height: 1px;
+  background: #f0e4de;
+  margin-bottom: 1.2rem;
+}
+
+.sv-card-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  color: var(--accent-gold);
+  gap: 0.4rem;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #b87878;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-  letter-spacing: 0.5px;
-  transition: gap 0.3s ease;
+  transition: color 0.3s ease;
+  margin-top: auto;
 }
 
-.service-link:hover {
-  gap: 1rem;
-  color: var(--deep-rose);
+.sv-card-link:hover {
+  color: #96595e;
 }
 
-/* Responsive Design */
-@media (max-width: 968px) {
-  .section-title {
-    font-size: 2.5rem;
+.sv-card-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 0.85rem;
+}
+
+.sv-card-link:hover .sv-card-arrow {
+  transform: translateX(5px);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1100px) {
+  .sv-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
   }
 
-  .services-grid {
-    grid-template-columns: 1fr;
+  .sv-title {
+    font-size: 2.8rem;
   }
 }
 
-@media (max-width: 640px) {
-  .services {
+@media (max-width: 720px) {
+  .sv {
     padding: 4rem 5%;
   }
 
-  .section-title {
-    font-size: 2rem;
+  .sv-header {
+    margin-bottom: 3rem;
+  }
+
+  .sv-title {
+    font-size: 2.3rem;
+  }
+
+  .sv-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 3.5px;
+    gap: 0.7rem;
+  }
+
+  .sv-eyebrow-line {
+    width: 22px;
+  }
+
+  .sv-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .sv {
+    padding: 3rem 4%;
+  }
+
+  .sv-title {
+    font-size: 1.9rem;
+  }
+
+  .sv-card-icon-area {
+    height: 130px;
+  }
+
+  .sv-card-icon-circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .sv-card-emoji {
+    font-size: 1.5rem;
+  }
+
+  .sv-card-body {
+    padding: 1.3rem 1.4rem 1.5rem;
+  }
+
+  .sv-card-title {
+    font-size: 1.35rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .sv-card,
+  .sv-card-icon-circle,
+  .sv-card-arrow {
+    transition: none;
+  }
+
+  .sv-card:hover {
+    transform: none;
   }
 }
