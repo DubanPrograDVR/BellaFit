@@ -1,0 +1,161 @@
+/* ── Showcase Split Section ── */
+.showcase {
+  display: flex;
+  min-height: 600px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Right: Image ── */
+.showcase-image {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.showcase-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 6s ease;
+}
+
+.showcase-image:hover img {
+  transform: scale(1.04);
+}
+
+/* ── Left: Brand panel ── */
+.showcase-brand {
+  flex: 0.9;
+  background: var(--charcoal, #2c2c2c);
+  background: linear-gradient(
+    145deg,
+    var(--charcoal, #2c2c2c) 0%,
+    #1a1a1a 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  position: relative;
+}
+
+/* Decorative accent curved line between panels */
+.showcase-brand::after {
+  content: "";
+  position: absolute;
+  top: -30px;
+  right: -40px;
+  width: 80px;
+  height: calc(100% + 60px);
+  border: 3px solid var(--accent-gold, #d4a574);
+  border-radius: 0 60px 60px 0;
+  border-left: none;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Subtle radial glow behind the logo */
+.showcase-brand::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(232, 180, 184, 0.15) 0%,
+    rgba(212, 165, 116, 0.06) 50%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.showcase-brand-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+  z-index: 1;
+}
+
+.showcase-sublogo {
+  width: 200px;
+  height: auto;
+  opacity: 0.9;
+  filter: brightness(1.1);
+  transition: opacity 0.4s ease;
+}
+
+.showcase-sublogo:hover {
+  opacity: 1;
+}
+
+.showcase-line {
+  width: 50px;
+  height: 1px;
+  background: var(--accent-gold, #d4a574);
+  opacity: 0.5;
+}
+
+.showcase-tagline {
+  color: var(--primary-rose, #e8b4b8);
+  opacity: 0.45;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.8;
+  max-width: 260px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 968px) {
+  .showcase {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .showcase-image {
+    height: 400px;
+  }
+
+  .showcase-brand {
+    padding: 3.5rem 2rem;
+  }
+
+  .showcase-brand::after {
+    top: auto;
+    bottom: -30px;
+    right: 50%;
+    transform: translateX(50%) rotate(90deg);
+    width: 60px;
+    height: 80px;
+  }
+
+  .showcase-sublogo {
+    width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .showcase-image {
+    height: 300px;
+  }
+
+  .showcase-brand {
+    padding: 3rem 1.5rem;
+  }
+
+  .showcase-sublogo {
+    width: 130px;
+  }
+
+  .showcase-tagline {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+  }
+}

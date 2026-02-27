@@ -257,11 +257,10 @@
   padding: 0 5%;
 }
 
-/* ─── Left: Image ─── */
+/* ─── Left: Text ─── */
 .intro-left {
   flex: 1;
-  display: flex;
-  justify-content: center;
+  max-width: 560px;
 }
 
 .intro-image-wrapper {
@@ -313,10 +312,11 @@
   white-space: nowrap;
 }
 
-/* ─── Right: Text ─── */
+/* ─── Right: Image ─── */
 .intro-right {
   flex: 1;
-  max-width: 560px;
+  display: flex;
+  justify-content: center;
 }
 
 .intro-label {
@@ -435,13 +435,13 @@
   }
 
   .intro-left {
-    order: 2;
-    width: 100%;
+    order: 1;
+    max-width: 100%;
   }
 
   .intro-right {
-    order: 1;
-    max-width: 100%;
+    order: 2;
+    width: 100%;
   }
 
   .intro-label {
@@ -498,109 +498,6 @@
   .intro-image-wrapper {
     max-width: 300px;
     aspect-ratio: 3 / 4;
-  }
-}
-
-/* ═══════════════════════════════════════════
-   Section 2: Stats / Resultados
-   ═══════════════════════════════════════════ */
-.stats-section {
-  background: var(--charcoal);
-  padding: 4rem 0;
-  position: relative;
-}
-
-.stats-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 5%;
-}
-
-.stats-grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-}
-
-.stats-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  flex: 1;
-  text-align: center;
-}
-
-.stats-number {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 3.2rem;
-  font-weight: 400;
-  color: #fff;
-  line-height: 1;
-}
-
-.stats-label {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.stats-divider {
-  width: 1px;
-  height: 50px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  flex-shrink: 0;
-}
-
-/* ─── Stats Responsive ─── */
-@media (max-width: 768px) {
-  .stats-section {
-    padding: 3rem 0;
-  }
-
-  .stats-grid {
-    flex-wrap: wrap;
-    gap: 2rem 1rem;
-  }
-
-  .stats-divider {
-    display: none;
-  }
-
-  .stats-item {
-    flex: 0 0 calc(50% - 0.5rem);
-  }
-
-  .stats-number {
-    font-size: 2.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .stats-section {
-    padding: 2.5rem 0;
-  }
-
-  .stats-grid {
-    gap: 1.5rem 0.5rem;
-  }
-
-  .stats-number {
-    font-size: 2rem;
-  }
-
-  .stats-label {
-    font-size: 0.55rem;
-    letter-spacing: 2px;
   }
 }
 

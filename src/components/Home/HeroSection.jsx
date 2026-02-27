@@ -42,17 +42,6 @@ const HeroSection = () => {
       <section className="intro-section">
         <div className="intro-container">
           <div className="intro-left">
-            <div className="intro-image-wrapper">
-              <div className="intro-image-bg"></div>
-              <img
-                src="/sublogo.png"
-                alt="BellaFit"
-                className="intro-image-watermark"
-              />
-              <p className="intro-image-caption">Bungee Fitness</p>
-            </div>
-          </div>
-          <div className="intro-right">
             <p className="intro-label">
               <span className="intro-label-line"></span>
               SOBRE BELLAFIT
@@ -80,31 +69,15 @@ const HeroSection = () => {
               </a>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ─── Sección 2: Estadísticas / Resultados ─── */}
-      <section className="stats-section">
-        <div className="stats-container">
-          <div className="stats-grid">
-            <div className="stats-item">
-              <span className="stats-number">500+</span>
-              <span className="stats-label">Alumnas Activas</span>
-            </div>
-            <div className="stats-divider"></div>
-            <div className="stats-item">
-              <span className="stats-number">8</span>
-              <span className="stats-label">Disciplinas Únicas</span>
-            </div>
-            <div className="stats-divider"></div>
-            <div className="stats-item">
-              <span className="stats-number">3+</span>
-              <span className="stats-label">Años de Experiencia</span>
-            </div>
-            <div className="stats-divider"></div>
-            <div className="stats-item">
-              <span className="stats-number">100%</span>
-              <span className="stats-label">Compromiso Contigo</span>
+          <div className="intro-right">
+            <div className="intro-image-wrapper">
+              <div className="intro-image-bg"></div>
+              <img
+                src="/sublogo.png"
+                alt="BellaFit"
+                className="intro-image-watermark"
+              />
+              <p className="intro-image-caption">Bungee Fitness</p>
             </div>
           </div>
         </div>
