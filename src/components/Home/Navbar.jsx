@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
 import "./styles/Navbar.css";
 import { elementos_navbar } from "./data/navbarData";
 
@@ -26,24 +27,35 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, [closeMenu]);
 
+  const isRoute = (href) => href.startsWith("/") && !href.startsWith("/#");
+
   return (
     <>
       <nav className="navbar">
         <div className="logo-wrapper">
-          <a href="/" className="logo">
+          <Link to="/" className="logo" onClick={closeMenu}>
             <img src="/logo.png" alt="BellaFit" className="logo-img" />
-          </a>
+          </Link>
         </div>
         <div className="nav-container">
           <ul className={`nav-links${menuOpen ? " active" : ""}`}>
             {elementos_navbar.map((item, index) => (
               <li key={index}>
-                <a
-                  href={item.enlace}
-                  className={item.clase || ""}
-                  onClick={closeMenu}>
-                  {item.nombre}
-                </a>
+                {isRoute(item.enlace) ? (
+                  <Link
+                    to={item.enlace}
+                    className={item.clase || ""}
+                    onClick={closeMenu}>
+                    {item.nombre}
+                  </Link>
+                ) : (
+                  <a
+                    href={item.enlace}
+                    className={item.clase || ""}
+                    onClick={closeMenu}>
+                    {item.nombre}
+                  </a>
+                )}
               </li>
             ))}
           </ul>

@@ -1,0 +1,394 @@
+/* ══════════════════════════════════════
+   Formaciones Page — BellaFit Academy
+   ══════════════════════════════════════ */
+
+/* ── Hero ── */
+.formaciones-hero {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--charcoal, #2c2c2c);
+  overflow: hidden;
+  margin-top: 100px;
+}
+
+.formaciones-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(44, 44, 44, 0.95) 0%,
+    rgba(26, 26, 26, 0.9) 100%
+  );
+}
+
+.formaciones-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 4rem 2rem;
+  max-width: 700px;
+}
+
+.formaciones-hero-label {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent-gold, #d4a574);
+  display: block;
+  margin-bottom: 1.2rem;
+}
+
+.formaciones-hero-content h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: var(--cream, #faf8f6);
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.formaciones-hero-content p {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1rem;
+  color: rgba(250, 248, 246, 0.6);
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.formaciones-hero-line {
+  width: 60px;
+  height: 1px;
+  background: var(--primary-rose, #e8b4b8);
+  margin: 2rem auto 0;
+  opacity: 0.6;
+}
+
+/* ── Section container ── */
+.formaciones-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* ── Formation block ── */
+.formacion-block {
+  background: var(--cream, #faf8f6);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(232, 180, 184, 0.15);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.formacion-block:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Header ── */
+.formacion-header {
+  padding: 3rem 3rem 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.formacion-badge {
+  display: inline-block;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 0.4rem 1.4rem;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.formacion-presencial .formacion-badge {
+  background: rgba(232, 180, 184, 0.15);
+  color: var(--deep-rose, #c89099);
+  border: 1px solid rgba(232, 180, 184, 0.3);
+}
+
+.formacion-online .formacion-badge {
+  background: rgba(212, 165, 116, 0.15);
+  color: var(--accent-gold, #d4a574);
+  border: 1px solid rgba(212, 165, 116, 0.3);
+}
+
+.formacion-header h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: var(--charcoal, #2c2c2c);
+  margin-bottom: 0.6rem;
+}
+
+.formacion-subtitulo {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.9rem;
+  color: var(--deep-rose, #c89099);
+  letter-spacing: 1px;
+}
+
+/* ── Body ── */
+.formacion-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 0 3rem 2rem;
+}
+
+.formacion-descripcion {
+  font-family: "Lato", sans-serif;
+  font-size: 0.95rem;
+  color: var(--charcoal, #2c2c2c);
+  line-height: 1.8;
+  opacity: 0.75;
+  margin-bottom: 2rem;
+}
+
+/* ── Details grid ── */
+.formacion-detalles {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formacion-detalle {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(232, 180, 184, 0.15);
+}
+
+.detalle-label {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-gold, #d4a574);
+  font-weight: 600;
+}
+
+.detalle-valor {
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  color: var(--charcoal, #2c2c2c);
+  opacity: 0.8;
+}
+
+/* ── Learning list ── */
+.formacion-aprendizajes {
+  padding: 2rem;
+  background: rgba(44, 44, 44, 0.03);
+  border-radius: 12px;
+}
+
+.formacion-aprendizajes h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--charcoal, #2c2c2c);
+  margin-bottom: 1.5rem;
+}
+
+.formacion-aprendizajes ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.formacion-aprendizajes li {
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  color: var(--charcoal, #2c2c2c);
+  opacity: 0.75;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  line-height: 1.6;
+}
+
+.check-icon {
+  color: var(--primary-rose, #e8b4b8);
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.formacion-presencial .check-icon {
+  color: var(--deep-rose, #c89099);
+}
+
+.formacion-online .check-icon {
+  color: var(--accent-gold, #d4a574);
+}
+
+/* ── CTA button ── */
+.formacion-cta-wrapper {
+  padding: 0 3rem 3rem;
+  text-align: center;
+}
+
+.formacion-cta {
+  display: inline-block;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  border-radius: 40px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.formacion-presencial .formacion-cta {
+  background: var(--primary-rose, #e8b4b8);
+  color: white;
+  border: 2px solid transparent;
+}
+
+.formacion-presencial .formacion-cta:hover {
+  background: transparent;
+  color: var(--deep-rose, #c89099);
+  border-color: var(--deep-rose, #c89099);
+  transform: translateY(-2px);
+}
+
+.formacion-online .formacion-cta {
+  background: var(--accent-gold, #d4a574);
+  color: white;
+  border: 2px solid transparent;
+}
+
+.formacion-online .formacion-cta:hover {
+  background: transparent;
+  color: var(--accent-gold, #d4a574);
+  border-color: var(--accent-gold, #d4a574);
+  transform: translateY(-2px);
+}
+
+/* ── Final CTA section ── */
+.formaciones-final-cta {
+  background: var(--charcoal, #2c2c2c);
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.formaciones-final-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.formaciones-final-content h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--cream, #faf8f6);
+  margin-bottom: 1rem;
+}
+
+.formaciones-final-content p {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.9rem;
+  color: rgba(250, 248, 246, 0.5);
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.formaciones-final-cta .formacion-cta {
+  background: var(--primary-rose, #e8b4b8);
+  color: white;
+  border: 2px solid transparent;
+}
+
+.formaciones-final-cta .formacion-cta:hover {
+  background: transparent;
+  color: var(--primary-rose, #e8b4b8);
+  border-color: var(--primary-rose, #e8b4b8);
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════
+   Responsive
+   ══════════════════════════════════════ */
+@media (max-width: 868px) {
+  .formaciones-hero-content h1 {
+    font-size: 2.6rem;
+  }
+
+  .formacion-body {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 2rem 2rem;
+  }
+
+  .formacion-header {
+    padding: 2.5rem 2rem 1.5rem;
+  }
+
+  .formacion-cta-wrapper {
+    padding: 0 2rem 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .formaciones-hero {
+    min-height: 40vh;
+    margin-top: 80px;
+  }
+
+  .formaciones-hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .formaciones-hero-content p {
+    font-size: 0.85rem;
+  }
+
+  .formacion-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .formacion-body {
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  .formacion-header {
+    padding: 2rem 1.5rem 1.2rem;
+  }
+
+  .formacion-cta-wrapper {
+    padding: 0 1.5rem 2rem;
+  }
+
+  .formacion-cta {
+    padding: 0.9rem 2rem;
+    font-size: 0.75rem;
+  }
+
+  .formaciones-section {
+    padding: 3rem 1rem;
+    gap: 3rem;
+  }
+
+  .formaciones-final-content h2 {
+    font-size: 1.6rem;
+  }
+}
