@@ -1,0 +1,260 @@
+/* ══════════════════════════════════════
+   Login Page — BellaFit
+   ══════════════════════════════════════ */
+
+.login-page {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Banner (columna izquierda) ── */
+.login-banner {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.login-banner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.login-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(44, 44, 44, 0.85) 0%,
+    rgba(44, 44, 44, 0.3) 50%,
+    rgba(44, 44, 44, 0.15) 100%
+  );
+  z-index: 1;
+}
+
+.login-banner-content {
+  position: relative;
+  z-index: 2;
+  padding: 3rem;
+}
+
+.login-banner-logo {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--cream, #faf8f6);
+  text-decoration: none;
+  letter-spacing: 3px;
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.login-banner-logo:hover {
+  color: var(--primary-rose, #e8b4b8);
+}
+
+.login-banner-content p {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  color: rgba(250, 248, 246, 0.6);
+}
+
+/* ── Formulario (columna derecha) ── */
+.login-form-col {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background: var(--cream, #faf8f6);
+}
+
+.login-form-wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-label {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-gold, #d4a574);
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.login-form-wrapper h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.login-line {
+  width: 50px;
+  height: 1px;
+  background: var(--primary-rose, #e8b4b8);
+  margin: 1.5rem 0 2rem;
+}
+
+/* ── Form ── */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.login-field label {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--charcoal, #2c2c2c);
+}
+
+.login-field input {
+  font-family: "Lato", sans-serif;
+  font-size: 0.92rem;
+  padding: 0.85rem 1.2rem;
+  border: 1.5px solid rgba(200, 144, 153, 0.25);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--charcoal, #2c2c2c);
+  outline: none;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.login-field input::placeholder {
+  color: #c0b0b0;
+  font-size: 0.85rem;
+}
+
+.login-field input:focus {
+  border-color: var(--primary-rose, #e8b4b8);
+  box-shadow: 0 0 0 3px rgba(232, 180, 184, 0.15);
+}
+
+/* ── Error ── */
+.login-error {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.78rem;
+  color: #d44;
+  background: rgba(221, 68, 68, 0.06);
+  border: 1px solid rgba(221, 68, 68, 0.15);
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+/* ── Submit ── */
+.login-submit {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 1rem;
+  border: none;
+  border-radius: 30px;
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.login-submit:hover:not(:disabled) {
+  background: var(--deep-rose, #c89099);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 144, 153, 0.3);
+}
+
+.login-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Link a registro ── */
+.login-register-link {
+  font-family: "Lato", sans-serif;
+  font-size: 0.85rem;
+  color: #8a7a7a;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.login-register-link a {
+  color: var(--deep-rose, #c89099);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.login-register-link a:hover {
+  color: var(--accent-gold, #d4a574);
+}
+
+/* ══════════════════════════════════════
+   Responsive
+   ══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .login-page {
+    flex-direction: column;
+  }
+
+  .login-banner {
+    min-height: 35vh;
+    flex: none;
+  }
+
+  .login-form-col {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .login-form-wrapper h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-banner {
+    min-height: 28vh;
+  }
+
+  .login-banner-content {
+    padding: 2rem;
+  }
+
+  .login-banner-logo {
+    font-size: 1.8rem;
+  }
+
+  .login-form-wrapper h1 {
+    font-size: 1.9rem;
+  }
+
+  .login-field input {
+    padding: 0.75rem 1rem;
+  }
+}
