@@ -1,0 +1,281 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { register } from "../lib/auth";
+import "./Register.css";
+
+const INITIAL = {
+  nombre: "",
+  rut: "",
+  fecha_nacimiento: "",
+  telefono: "",
+  direccion: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
+
+function validateRut(rut) {
+  const cleaned = rut.replace(/[.\-]/g, "");
+  if (cleaned.length < 8) return false;
+  const body = cleaned.slice(0, -1);
+  const dv = cleaned.slice(-1).toUpperCase();
+  let sum = 0;
+  let mul = 2;
+  for (let i = body.length - 1; i >= 0; i--) {
+    sum += parseInt(body[i], 10) * mul;
+    mul = mul === 7 ? 2 : mul + 1;
+  }
+  const expected = 11 - (sum % 11);
+  const dvExpected =
+    expected === 11 ? "0" : expected === 10 ? "K" : String(expected);
+  return dv === dvExpected;
+}
+
+export default function Register() {
+  const navigate = useNavigate();
+  const [form, setForm] = useState(INITIAL);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    if (error) setError("");
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Validaciones
+    const empty = Object.entries(form).some(([, v]) => !v.trim());
+    if (empty) {
+      setError("Por favor completa todos los campos");
+      return;
+    }
+
+    if (!validateRut(form.rut)) {
+      setError("El RUT ingresado no es válido");
+      return;
+    }
+
+    if (form.password.length < 6) {
+      setError("La contraseña debe tener al menos 6 caracteres");
+      return;
+    }
+
+    if (form.password !== form.confirmPassword) {
+      setError("Las contraseñas no coinciden");
+      return;
+    }
+
+    setLoading(true);
+    const { error: regError } = await register({
+      email: form.email.trim(),
+      password: form.password,
+      nombre: form.nombre.trim(),
+      telefono: form.telefono.trim(),
+      direccion: form.direccion.trim(),
+      rut: form.rut.replace(/[.\-]/g, "").trim(),
+      fecha_nacimiento: form.fecha_nacimiento,
+    });
+    setLoading(false);
+
+    if (regError) {
+      setError(regError.message);
+      return;
+    }
+
+    setSuccess(true);
+  };
+
+  // ── Pantalla de éxito: aviso de verificación ──
+  if (success) {
+    return (
+      <div className="register-page">
+        <div className="register-banner">
+          <div className="register-banner-overlay" />
+          <img
+            src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=900&q=80"
+            alt="BellaFit Studio"
+          />
+          <div className="register-banner-content">
+            <Link to="/" className="register-banner-logo">
+              BellaFit
+            </Link>
+            <p>Tu espacio de bienestar y transformación</p>
+          </div>
+        </div>
+
+        <div className="register-form-col">
+          <div className="register-success">
+            <span className="register-success-icon">✉️</span>
+            <h2>¡Revisa tu correo!</h2>
+            <p>
+              Hemos enviado un enlace de verificación a{" "}
+              <strong>{form.email}</strong>.
+            </p>
+            <p className="register-success-sub">
+              Haz clic en el enlace del correo para activar tu cuenta en
+              BellaFit. Si no lo ves, revisa tu carpeta de spam.
+            </p>
+            <Link to="/login" className="register-success-btn">
+              Ir a Iniciar Sesión
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="register-page">
+      {/* ── Columna izquierda: imagen ── */}
+      <div className="register-banner">
+        <div className="register-banner-overlay" />
+        <img
+          src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=900&q=80"
+          alt="BellaFit Studio"
+        />
+        <div className="register-banner-content">
+          <Link to="/" className="register-banner-logo">
+            BellaFit
+          </Link>
+          <p>Tu espacio de bienestar y transformación</p>
+        </div>
+      </div>
+
+      {/* ── Columna derecha: formulario ── */}
+      <div className="register-form-col">
+        <div className="register-form-wrapper">
+          <span className="register-label">Únete a BellaFit</span>
+          <h1>Crear Cuenta</h1>
+          <div className="register-line" />
+
+          <form onSubmit={handleSubmit} className="register-form">
+            {/* Nombre */}
+            <div className="register-field">
+              <label htmlFor="nombre">Nombre completo</label>
+              <input
+                id="nombre"
+                name="nombre"
+                type="text"
+                placeholder="Tu nombre completo"
+                value={form.nombre}
+                onChange={handleChange}
+                autoComplete="name"
+              />
+            </div>
+
+            {/* RUT + Fecha nacimiento (fila) */}
+            <div className="register-row">
+              <div className="register-field">
+                <label htmlFor="rut">RUT</label>
+                <input
+                  id="rut"
+                  name="rut"
+                  type="text"
+                  placeholder="12.345.678-9"
+                  value={form.rut}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="register-field">
+                <label htmlFor="fecha_nacimiento">Fecha de nacimiento</label>
+                <input
+                  id="fecha_nacimiento"
+                  name="fecha_nacimiento"
+                  type="date"
+                  value={form.fecha_nacimiento}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+
+            {/* Teléfono + Dirección (fila) */}
+            <div className="register-row">
+              <div className="register-field">
+                <label htmlFor="telefono">Teléfono</label>
+                <input
+                  id="telefono"
+                  name="telefono"
+                  type="tel"
+                  placeholder="+56 9 1234 5678"
+                  value={form.telefono}
+                  onChange={handleChange}
+                  autoComplete="tel"
+                />
+              </div>
+              <div className="register-field">
+                <label htmlFor="direccion">Dirección</label>
+                <input
+                  id="direccion"
+                  name="direccion"
+                  type="text"
+                  placeholder="Tu dirección"
+                  value={form.direccion}
+                  onChange={handleChange}
+                  autoComplete="street-address"
+                />
+              </div>
+            </div>
+
+            {/* Email */}
+            <div className="register-field">
+              <label htmlFor="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="tu@email.com"
+                value={form.email}
+                onChange={handleChange}
+                autoComplete="email"
+              />
+            </div>
+
+            {/* Contraseña + Confirmar (fila) */}
+            <div className="register-row">
+              <div className="register-field">
+                <label htmlFor="password">Contraseña</label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  placeholder="Mínimo 6 caracteres"
+                  value={form.password}
+                  onChange={handleChange}
+                  autoComplete="new-password"
+                />
+              </div>
+              <div className="register-field">
+                <label htmlFor="confirmPassword">Confirmar contraseña</label>
+                <input
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type="password"
+                  placeholder="Repite tu contraseña"
+                  value={form.confirmPassword}
+                  onChange={handleChange}
+                  autoComplete="new-password"
+                />
+              </div>
+            </div>
+
+            {error && <p className="register-error">{error}</p>}
+
+            <button
+              type="submit"
+              className="register-submit"
+              disabled={loading}>
+              {loading ? "Creando cuenta..." : "Crear Cuenta"}
+            </button>
+          </form>
+
+          <p className="register-login-link">
+            ¿Ya tienes cuenta? <Link to="/login">Iniciar Sesión</Link>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}

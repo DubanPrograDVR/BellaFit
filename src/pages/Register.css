@@ -1,0 +1,350 @@
+/* ══════════════════════════════════════
+   Register Page — BellaFit
+   ══════════════════════════════════════ */
+
+.register-page {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Banner (columna izquierda) ── */
+.register-banner {
+  position: relative;
+  flex: 0.85;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.register-banner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.register-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(44, 44, 44, 0.85) 0%,
+    rgba(44, 44, 44, 0.3) 50%,
+    rgba(44, 44, 44, 0.15) 100%
+  );
+  z-index: 1;
+}
+
+.register-banner-content {
+  position: relative;
+  z-index: 2;
+  padding: 3rem;
+}
+
+.register-banner-logo {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--cream, #faf8f6);
+  text-decoration: none;
+  letter-spacing: 3px;
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.register-banner-logo:hover {
+  color: var(--primary-rose, #e8b4b8);
+}
+
+.register-banner-content p {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  color: rgba(250, 248, 246, 0.6);
+}
+
+/* ── Formulario (columna derecha) ── */
+.register-form-col {
+  flex: 1.15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2.5rem;
+  background: var(--cream, #faf8f6);
+  overflow-y: auto;
+}
+
+.register-form-wrapper {
+  width: 100%;
+  max-width: 520px;
+}
+
+.register-label {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-gold, #d4a574);
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.register-form-wrapper h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.6rem;
+  font-weight: 300;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.register-line {
+  width: 50px;
+  height: 1px;
+  background: var(--primary-rose, #e8b4b8);
+  margin: 1.2rem 0 1.8rem;
+}
+
+/* ── Form ── */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.register-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.register-row .register-field {
+  flex: 1;
+}
+
+.register-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.register-field label {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--charcoal, #2c2c2c);
+}
+
+.register-field input {
+  font-family: "Lato", sans-serif;
+  font-size: 0.88rem;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid rgba(200, 144, 153, 0.25);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--charcoal, #2c2c2c);
+  outline: none;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.register-field input::placeholder {
+  color: #c0b0b0;
+  font-size: 0.82rem;
+}
+
+.register-field input:focus {
+  border-color: var(--primary-rose, #e8b4b8);
+  box-shadow: 0 0 0 3px rgba(232, 180, 184, 0.15);
+}
+
+/* input date styling */
+.register-field input[type="date"] {
+  color: var(--charcoal, #2c2c2c);
+}
+
+.register-field input[type="date"]:invalid,
+.register-field input[type="date"][value=""] {
+  color: #c0b0b0;
+}
+
+/* ── Error ── */
+.register-error {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.78rem;
+  color: #d44;
+  background: rgba(221, 68, 68, 0.06);
+  border: 1px solid rgba(221, 68, 68, 0.15);
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+/* ── Submit ── */
+.register-submit {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 1rem;
+  border: none;
+  border-radius: 30px;
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.3rem;
+}
+
+.register-submit:hover:not(:disabled) {
+  background: var(--deep-rose, #c89099);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 144, 153, 0.3);
+}
+
+.register-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Link a login ── */
+.register-login-link {
+  font-family: "Lato", sans-serif;
+  font-size: 0.85rem;
+  color: #8a7a7a;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.register-login-link a {
+  color: var(--deep-rose, #c89099);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.register-login-link a:hover {
+  color: var(--accent-gold, #d4a574);
+}
+
+/* ══════════════════════════════════════
+   Success Screen
+   ══════════════════════════════════════ */
+.register-success {
+  text-align: center;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.register-success-icon {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.register-success h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0 0 1rem;
+}
+
+.register-success p {
+  font-family: "Lato", sans-serif;
+  font-size: 0.95rem;
+  color: var(--charcoal, #2c2c2c);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.register-success strong {
+  color: var(--deep-rose, #c89099);
+}
+
+.register-success-sub {
+  color: #8a7a7a !important;
+  font-size: 0.85rem !important;
+  margin-top: 0.8rem !important;
+}
+
+.register-success-btn {
+  display: inline-block;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 30px;
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+}
+
+.register-success-btn:hover {
+  background: var(--deep-rose, #c89099);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 144, 153, 0.3);
+}
+
+/* ══════════════════════════════════════
+   Responsive
+   ══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .register-page {
+    flex-direction: column;
+  }
+
+  .register-banner {
+    min-height: 28vh;
+    flex: none;
+  }
+
+  .register-form-col {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .register-form-wrapper h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .register-row {
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .register-banner {
+    min-height: 22vh;
+  }
+
+  .register-banner-content {
+    padding: 2rem;
+  }
+
+  .register-banner-logo {
+    font-size: 1.8rem;
+  }
+
+  .register-form-wrapper h1 {
+    font-size: 1.9rem;
+  }
+
+  .register-field input {
+    padding: 0.68rem 0.9rem;
+  }
+}
