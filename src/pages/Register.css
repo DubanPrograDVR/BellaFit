@@ -186,6 +186,32 @@
   text-align: center;
 }
 
+/* Error inline por campo (debajo del input) */
+.register-field-error {
+  display: block;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.72rem;
+  color: #d44;
+  margin-top: 0.3rem;
+  padding-left: 0.25rem;
+}
+
+/* Hint informativo debajo del input */
+.register-field-hint {
+  display: block;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.7rem;
+  color: #b09090;
+  margin-top: 0.3rem;
+  padding-left: 0.25rem;
+}
+
+/* Borde rojo en input inválido */
+.register-field input.input-error {
+  border-color: rgba(221, 68, 68, 0.5);
+  box-shadow: 0 0 0 3px rgba(221, 68, 68, 0.1);
+}
+
 /* ── Submit ── */
 .register-submit {
   font-family: "Josefin Sans", sans-serif;

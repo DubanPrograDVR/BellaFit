@@ -31,15 +31,58 @@ function validateRut(rut) {
   return dv === dvExpected;
 }
 
+// Formatea el valor del RUT mientras el usuario escribe: 12.345.678-9
+function formatRut(value) {
+  const cleaned = value.replace(/[^0-9kK]/g, "").toUpperCase();
+  if (cleaned.length <= 1) return cleaned;
+  const body = cleaned.slice(0, -1);
+  const dv = cleaned.slice(-1);
+  return body.replace(/\B(?=(\d{3})+(?!\d))/g, ".") + "-" + dv;
+}
+
+// Teléfono chileno: +56 9 XXXX XXXX (11 dígitos con código) ó 9XXXXXXXX (9 dígitos sin código)
+function validateTelefono(tel) {
+  const digits = tel.replace(/\D/g, "");
+  if (digits.startsWith("56") && digits.length === 11) return true;
+  if (!digits.startsWith("56") && digits.length === 9) return true;
+  return false;
+}
+
 export default function Register() {
   const navigate = useNavigate();
   const [form, setForm] = useState(INITIAL);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [rutError, setRutError] = useState("");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    if (error) setError("");
+  };
+
+  // RUT: limpia error al editar, auto-formatea y valida al salir del campo
+  const handleRutChange = (e) => {
+    setForm({ ...form, rut: e.target.value });
+    if (rutError) setRutError("");
+    if (error) setError("");
+  };
+
+  const handleRutBlur = () => {
+    if (!form.rut) return;
+    const formatted = formatRut(form.rut);
+    setForm((prev) => ({ ...prev, rut: formatted }));
+    setRutError(
+      validateRut(formatted)
+        ? ""
+        : "RUT inválido — verifica el dígito verificador",
+    );
+  };
+
+  // Teléfono: solo dígitos, +, espacios y guión; máx. 15 chars
+  const handleTelefonoChange = (e) => {
+    const filtered = e.target.value.replace(/[^0-9+\s\-]/g, "");
+    setForm({ ...form, telefono: filtered });
     if (error) setError("");
   };
 
@@ -55,6 +98,13 @@ export default function Register() {
 
     if (!validateRut(form.rut)) {
       setError("El RUT ingresado no es válido");
+      return;
+    }
+
+    if (!validateTelefono(form.telefono)) {
+      setError(
+        "El teléfono no es válido. Usa el formato +56 9 1234 5678 ó 9 1234 5678",
+      );
       return;
     }
 
@@ -176,8 +226,14 @@ export default function Register() {
                   type="text"
                   placeholder="12.345.678-9"
                   value={form.rut}
-                  onChange={handleChange}
+                  onChange={handleRutChange}
+                  onBlur={handleRutBlur}
+                  className={rutError ? "input-error" : ""}
+                  maxLength={12}
                 />
+                {rutError && (
+                  <span className="register-field-error">{rutError}</span>
+                )}
               </div>
               <div className="register-field">
                 <label htmlFor="fecha_nacimiento">Fecha de nacimiento</label>
@@ -201,9 +257,11 @@ export default function Register() {
                   type="tel"
                   placeholder="+56 9 1234 5678"
                   value={form.telefono}
-                  onChange={handleChange}
+                  onChange={handleTelefonoChange}
                   autoComplete="tel"
+                  maxLength={15}
                 />
+                <span className="register-field-hint">Ej: +56 9 1234 5678</span>
               </div>
               <div className="register-field">
                 <label htmlFor="direccion">Dirección</label>
