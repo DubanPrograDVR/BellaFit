@@ -1,0 +1,73 @@
+/* ══════════════════════════════════════
+   Auth Callback — BellaFit
+   ══════════════════════════════════════ */
+
+.callback-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream, #faf8f6);
+  padding: 2rem;
+}
+
+.callback-card {
+  text-align: center;
+  background: #fff;
+  border-radius: 20px;
+  padding: 3.5rem 3rem;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: 0 4px 30px rgba(44, 32, 32, 0.06);
+  border: 1px solid rgba(232, 180, 184, 0.1);
+}
+
+.callback-icon {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.callback-card h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0 0 0.8rem;
+}
+
+.callback-card p {
+  font-family: "Lato", sans-serif;
+  font-size: 0.92rem;
+  color: #8a7a7a;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.callback-sub {
+  font-size: 0.82rem !important;
+  color: #bbb !important;
+  margin-top: 0.5rem !important;
+}
+
+.callback-btn {
+  display: inline-block;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 0.9rem 2.2rem;
+  border-radius: 30px;
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: 1.8rem;
+}
+
+.callback-btn:hover {
+  background: var(--deep-rose, #c89099);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 144, 153, 0.3);
+}

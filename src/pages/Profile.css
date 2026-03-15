@@ -1,0 +1,697 @@
+/* ══════════════════════════════════════
+   Profile Page — BellaFit Dashboard
+   ══════════════════════════════════════ */
+
+.perfil-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 80px);
+  margin-top: 80px;
+  font-family: "Josefin Sans", sans-serif;
+  color: var(--deep-rose, #c89099);
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.perfil-page {
+  display: flex;
+  min-height: 100vh;
+  margin-top: 80px;
+  background: var(--cream, #faf8f6);
+}
+
+/* ══════════════════════════════════════
+   Sidebar
+   ══════════════════════════════════════ */
+.perfil-sidebar {
+  width: 280px;
+  min-width: 280px;
+  background: #fff;
+  border-right: 1px solid rgba(232, 180, 184, 0.12);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+.perfil-sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(232, 180, 184, 0.12);
+}
+
+.perfil-avatar-sm {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.perfil-sidebar-name {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0;
+}
+
+.perfil-sidebar-plan {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent-gold, #d4a574);
+  margin: 0.15rem 0 0;
+}
+
+/* Nav buttons */
+.perfil-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.perfil-sidebar-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #8a7a7a;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.perfil-sidebar-btn:hover {
+  background: rgba(232, 180, 184, 0.08);
+  color: var(--charcoal, #2c2c2c);
+}
+
+.perfil-sidebar-btn.active {
+  background: rgba(232, 180, 184, 0.14);
+  color: var(--deep-rose, #c89099);
+  font-weight: 600;
+}
+
+.perfil-sidebar-icon {
+  font-size: 1rem;
+  width: 22px;
+  text-align: center;
+}
+
+.perfil-sidebar-cta {
+  margin-top: auto;
+  display: block;
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.8rem;
+  border: 1.5px solid rgba(200, 144, 153, 0.3);
+  border-radius: 30px;
+  color: var(--deep-rose, #c89099);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.perfil-sidebar-cta:hover {
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+  border-color: var(--primary-rose, #e8b4b8);
+}
+
+/* ══════════════════════════════════════
+   Content Area
+   ══════════════════════════════════════ */
+.perfil-content {
+  flex: 1;
+  padding: 2.5rem 3rem;
+  max-width: 900px;
+}
+
+.perfil-content h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0 0 1.5rem;
+  letter-spacing: 1px;
+}
+
+.perfil-section-subtitle {
+  margin-top: 2.5rem !important;
+}
+
+.perfil-empty {
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+/* ══════════════════════════════════════
+   Resumen
+   ══════════════════════════════════════ */
+.perfil-resumen-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.perfil-avatar-lg {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.perfil-resumen-header h2 {
+  margin: 0 0 0.2rem;
+  font-size: 1.8rem;
+}
+
+.perfil-email {
+  font-family: "Lato", sans-serif;
+  font-size: 0.88rem;
+  color: #8a7a7a;
+  margin: 0 0 0.5rem;
+}
+
+.perfil-plan-badge {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  background: var(--accent-gold, #d4a574);
+  color: #fff;
+}
+
+/* Info grid */
+.perfil-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.perfil-info-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.1rem 1.3rem;
+  border: 1px solid rgba(232, 180, 184, 0.1);
+}
+
+.perfil-info-label {
+  display: block;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-gold, #d4a574);
+  margin-bottom: 0.3rem;
+}
+
+.perfil-info-value {
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  color: var(--charcoal, #2c2c2c);
+}
+
+/* Stats */
+.perfil-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.perfil-stat-card {
+  flex: 1;
+  background: #fff;
+  border-radius: 14px;
+  padding: 1.3rem;
+  text-align: center;
+  border: 1px solid rgba(232, 180, 184, 0.1);
+}
+
+.perfil-stat-num {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--deep-rose, #c89099);
+}
+
+.perfil-stat-label {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #8a7a7a;
+}
+
+/* ══════════════════════════════════════
+   Compras
+   ══════════════════════════════════════ */
+.perfil-compras-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.perfil-compra-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-radius: 14px;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid rgba(232, 180, 184, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.perfil-compra-card:hover {
+  box-shadow: 0 4px 20px rgba(44, 32, 32, 0.06);
+}
+
+.perfil-compra-card.pasada {
+  opacity: 0.7;
+}
+
+.perfil-compra-tipo {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent-gold, #d4a574);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.perfil-compra-info h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0 0 0.3rem;
+}
+
+.perfil-compra-info p {
+  font-family: "Lato", sans-serif;
+  font-size: 0.78rem;
+  color: #8a7a7a;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.perfil-tracking {
+  font-weight: 600;
+  color: var(--deep-rose, #c89099) !important;
+}
+
+.perfil-compra-right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.perfil-compra-precio {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--charcoal, #2c2c2c);
+}
+
+/* Badges */
+.perfil-badge {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.25rem 0.8rem;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.badge-activo {
+  background: rgba(76, 175, 80, 0.1);
+  color: #2e7d32;
+}
+
+.badge-enviado {
+  background: rgba(33, 150, 243, 0.1);
+  color: #1565c0;
+}
+
+.badge-entregado {
+  background: rgba(156, 39, 176, 0.1);
+  color: #7b1fa2;
+}
+
+.badge-expirado {
+  background: rgba(158, 158, 158, 0.1);
+  color: #757575;
+}
+
+.badge-aprobado {
+  background: rgba(76, 175, 80, 0.1);
+  color: #2e7d32;
+}
+
+.perfil-compras-cta {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.perfil-cta-btn {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: 2px solid var(--primary-rose, #e8b4b8);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--deep-rose, #c89099);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.perfil-cta-btn:hover {
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+}
+
+/* ══════════════════════════════════════
+   Historial de Pagos (tabla)
+   ══════════════════════════════════════ */
+.perfil-pagos-table-wrap {
+  overflow-x: auto;
+}
+
+.perfil-pagos-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(232, 180, 184, 0.1);
+}
+
+.perfil-pagos-table thead {
+  background: rgba(232, 180, 184, 0.08);
+}
+
+.perfil-pagos-table th {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--charcoal, #2c2c2c);
+  padding: 1rem 1rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.perfil-pagos-table td {
+  font-family: "Lato", sans-serif;
+  font-size: 0.82rem;
+  color: var(--charcoal, #2c2c2c);
+  padding: 0.9rem 1rem;
+  border-top: 1px solid rgba(232, 180, 184, 0.08);
+  white-space: nowrap;
+}
+
+.perfil-pago-monto {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.perfil-boleta-btn {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--deep-rose, #c89099);
+  background: none;
+  border: 1px solid rgba(200, 144, 153, 0.25);
+  border-radius: 6px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.perfil-boleta-btn:hover {
+  background: rgba(232, 180, 184, 0.1);
+  border-color: var(--primary-rose, #e8b4b8);
+}
+
+/* ══════════════════════════════════════
+   Editar Perfil
+   ══════════════════════════════════════ */
+.perfil-editar-sub {
+  font-family: "Lato", sans-serif;
+  font-size: 0.88rem;
+  color: #8a7a7a;
+  margin: -1rem 0 2rem;
+  line-height: 1.7;
+}
+
+.perfil-editar-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 500px;
+}
+
+.perfil-edit-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.perfil-edit-field label {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--charcoal, #2c2c2c);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.perfil-lock {
+  font-size: 0.7rem;
+}
+
+.perfil-edit-field.disabled {
+  opacity: 0.5;
+}
+
+.perfil-edit-value {
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  color: var(--charcoal, #2c2c2c);
+  padding: 0.75rem 1rem;
+  background: rgba(232, 180, 184, 0.04);
+  border: 1.5px solid rgba(232, 180, 184, 0.1);
+  border-radius: 10px;
+}
+
+.perfil-edit-field input {
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--primary-rose, #e8b4b8);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--charcoal, #2c2c2c);
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.perfil-edit-field input:focus {
+  box-shadow: 0 0 0 3px rgba(232, 180, 184, 0.15);
+}
+
+/* Actions */
+.perfil-edit-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.perfil-edit-start,
+.perfil-edit-save {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: none;
+  border-radius: 30px;
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.perfil-edit-start:hover,
+.perfil-edit-save:hover {
+  background: var(--deep-rose, #c89099);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 144, 153, 0.3);
+}
+
+.perfil-edit-cancel {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: 1.5px solid rgba(200, 144, 153, 0.3);
+  border-radius: 30px;
+  background: transparent;
+  color: #8a7a7a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.perfil-edit-cancel:hover {
+  border-color: var(--deep-rose, #c89099);
+  color: var(--deep-rose, #c89099);
+}
+
+/* ══════════════════════════════════════
+   Responsive
+   ══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .perfil-page {
+    flex-direction: column;
+  }
+
+  .perfil-sidebar {
+    width: 100%;
+    min-width: unset;
+    position: relative;
+    top: unset;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    gap: 1rem;
+    border-right: none;
+    border-bottom: 1px solid rgba(232, 180, 184, 0.12);
+  }
+
+  .perfil-sidebar-header {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .perfil-sidebar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    width: 100%;
+  }
+
+  .perfil-sidebar-btn {
+    padding: 0.55rem 0.8rem;
+    font-size: 0.7rem;
+  }
+
+  .perfil-sidebar-cta {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .perfil-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .perfil-resumen-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .perfil-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .perfil-stats {
+    flex-direction: column;
+  }
+
+  .perfil-compra-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .perfil-compra-right {
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .perfil-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .perfil-pagos-table th,
+  .perfil-pagos-table td {
+    font-size: 0.72rem;
+    padding: 0.7rem 0.6rem;
+  }
+}
