@@ -61,22 +61,23 @@ export default function Register() {
     if (error) setError("");
   };
 
-  // RUT: limpia error al editar, auto-formatea y valida al salir del campo
+  // RUT: auto-formatea mientras escribe y valida en tiempo real
   const handleRutChange = (e) => {
-    setForm({ ...form, rut: e.target.value });
-    if (rutError) setRutError("");
+    const formatted = formatRut(e.target.value);
+    setForm((prev) => ({ ...prev, rut: formatted }));
     if (error) setError("");
+    // Valida solo cuando ya tiene suficientes caracteres (cuerpo + dígito)
+    const digits = formatted.replace(/[^0-9kK]/g, "");
+    if (digits.length >= 2) {
+      setRutError(validateRut(formatted) ? "" : "RUT no es válido");
+    } else {
+      setRutError("");
+    }
   };
 
   const handleRutBlur = () => {
     if (!form.rut) return;
-    const formatted = formatRut(form.rut);
-    setForm((prev) => ({ ...prev, rut: formatted }));
-    setRutError(
-      validateRut(formatted)
-        ? ""
-        : "RUT inválido — verifica el dígito verificador",
-    );
+    setRutError(validateRut(form.rut) ? "" : "RUT no es válido");
   };
 
   // Teléfono: solo dígitos, +, espacios y guión; máx. 15 chars
