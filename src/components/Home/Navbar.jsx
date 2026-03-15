@@ -4,12 +4,14 @@ import "./styles/Navbar.css";
 import { elementos_navbar } from "./data/navbarData";
 import { useAuth } from "../../context/AuthContext";
 import { logout } from "../../lib/auth";
+import { useToast } from "../../context/ToastContext";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
+  const { showToast } = useToast();
 
   const closeMenu = useCallback(() => {
     setMenuOpen(false);
@@ -21,6 +23,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     closeMenu();
     await logout();
+    showToast("Has cerrado sesión correctamente");
     navigate("/");
   };
 

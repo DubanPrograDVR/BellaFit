@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { login } from "../lib/auth";
+import { useToast } from "../context/ToastContext";
 import "./Login.css";
 
 export default function Login() {
   const navigate = useNavigate();
+  const { showToast } = useToast();
 
   const [form, setForm] = useState({ identifier: "", password: "" });
   const [error, setError] = useState("");
@@ -32,6 +34,7 @@ export default function Login() {
       return;
     }
 
+    showToast("Has iniciado sesión correctamente");
     navigate("/");
   };
 
