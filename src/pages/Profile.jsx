@@ -1,5 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUser,
+  faBagShopping,
+  faCreditCard,
+  faPen,
+  faLock,
+} from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../components/Home/Navbar";
 import Footer from "../components/Home/Footer";
 import WhatsAppButton from "../components/Home/WhatsAppButton";
@@ -13,10 +21,10 @@ import { supabase } from "../lib/supabase";
 import "./Profile.css";
 
 const SECTIONS = [
-  { id: "resumen", label: "Resumen", icon: "👤" },
-  { id: "compras", label: "Mis Compras", icon: "🛍️" },
-  { id: "pagos", label: "Historial de Pagos", icon: "💳" },
-  { id: "editar", label: "Editar Perfil", icon: "✏️" },
+  { id: "resumen", label: "Resumen", icon: faUser },
+  { id: "compras", label: "Mis Compras", icon: faBagShopping },
+  { id: "pagos", label: "Historial de Pagos", icon: faCreditCard },
+  { id: "editar", label: "Editar Perfil", icon: faPen },
 ];
 
 function formatPrice(n) {
@@ -351,7 +359,10 @@ export default function Profile() {
         {/* RUT - bloqueado */}
         <div className="perfil-edit-field disabled">
           <label>
-            RUT <span className="perfil-lock">🔒</span>
+            RUT{" "}
+            <span className="perfil-lock">
+              <FontAwesomeIcon icon={faLock} />
+            </span>
           </label>
           <span className="perfil-edit-value">{dbProfile.rut || "—"}</span>
         </div>
@@ -359,7 +370,10 @@ export default function Profile() {
         {/* Fecha nacimiento - bloqueado */}
         <div className="perfil-edit-field disabled">
           <label>
-            Fecha de nacimiento <span className="perfil-lock">🔒</span>
+            Fecha de nacimiento{" "}
+            <span className="perfil-lock">
+              <FontAwesomeIcon icon={faLock} />
+            </span>
           </label>
           <span className="perfil-edit-value">
             {dbProfile.fecha_nacimiento
@@ -371,7 +385,10 @@ export default function Profile() {
         {/* Email - solo lectura */}
         <div className="perfil-edit-field disabled">
           <label>
-            Email <span className="perfil-lock">🔒</span>
+            Email{" "}
+            <span className="perfil-lock">
+              <FontAwesomeIcon icon={faLock} />
+            </span>
           </label>
           <span className="perfil-edit-value">{dbProfile.email}</span>
         </div>
@@ -428,14 +445,16 @@ export default function Profile() {
                 key={s.id}
                 className={`perfil-sidebar-btn${activeSection === s.id ? " active" : ""}`}
                 onClick={() => setActiveSection(s.id)}>
-                <span className="perfil-sidebar-icon">{s.icon}</span>
+                <span className="perfil-sidebar-icon">
+                  <FontAwesomeIcon icon={s.icon} />
+                </span>
                 {s.label}
               </button>
             ))}
           </nav>
 
           <Link to="/tienda" className="perfil-sidebar-cta">
-            🛒 Comprar productos
+            <FontAwesomeIcon icon={faBagShopping} /> Comprar productos
           </Link>
         </aside>
 

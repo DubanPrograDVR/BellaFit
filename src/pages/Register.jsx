@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { register } from "../lib/auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import "./Register.css";
 
 const INITIAL = {
@@ -159,7 +161,9 @@ export default function Register() {
 
         <div className="register-form-col">
           <div className="register-success">
-            <span className="register-success-icon">✉️</span>
+            <span className="register-success-icon">
+              <FontAwesomeIcon icon={faEnvelope} />
+            </span>
             <h2>¡Revisa tu correo!</h2>
             <p>
               Hemos enviado un enlace de verificación a{" "}
