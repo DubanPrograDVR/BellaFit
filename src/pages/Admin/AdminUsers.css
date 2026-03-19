@@ -1,0 +1,318 @@
+/* ══════════════════════════════════════
+   Admin — Shared Styles
+   ══════════════════════════════════════ */
+
+.admin-page-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.admin-page-subtitle {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.78rem;
+  color: #aaa;
+  margin: 0.3rem 0 0;
+  letter-spacing: 0.3px;
+}
+
+/* ══════════════════════════════════════
+   Admin Users
+   ══════════════════════════════════════ */
+
+.admin-users-loading {
+  font-family: "Josefin Sans", sans-serif;
+  color: var(--deep-rose, #c89099);
+  font-size: 0.9rem;
+  padding: 3rem 0;
+}
+
+.admin-users-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Filtros ── */
+.admin-users-filters {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.admin-filter-search {
+  flex: 1;
+  min-width: 220px;
+  padding: 0.65rem 1rem;
+  border: 1.5px solid rgba(200, 144, 153, 0.2);
+  border-radius: 10px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.8rem;
+  color: var(--charcoal, #2c2c2c);
+  background: #fff;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.admin-filter-search:focus {
+  border-color: var(--primary-rose, #e8b4b8);
+}
+
+.admin-filter-search::placeholder {
+  color: #c0b5b5;
+}
+
+.admin-filter-select {
+  padding: 0.65rem 1rem;
+  border: 1.5px solid rgba(200, 144, 153, 0.2);
+  border-radius: 10px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.8rem;
+  color: var(--charcoal, #2c2c2c);
+  background: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.admin-filter-select:focus {
+  border-color: var(--primary-rose, #e8b4b8);
+}
+
+/* ── Tabla ── */
+.admin-users-table-wrap {
+  overflow-x: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(232, 180, 184, 0.12);
+  background: #fff;
+}
+
+.admin-users-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.admin-users-table thead {
+  background: rgba(232, 180, 184, 0.06);
+}
+
+.admin-users-table th {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #999;
+  border-bottom: 1px solid rgba(232, 180, 184, 0.12);
+  white-space: nowrap;
+}
+
+.admin-users-table td {
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  color: var(--charcoal, #2c2c2c);
+  border-bottom: 1px solid rgba(232, 180, 184, 0.06);
+  vertical-align: middle;
+}
+
+.admin-users-table tbody tr:hover {
+  background: rgba(232, 180, 184, 0.03);
+}
+
+.admin-users-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ── User name cell ── */
+.admin-user-name {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
+}
+
+.admin-user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--primary-rose, #e8b4b8),
+    var(--deep-rose, #c89099)
+  );
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* ── Role badges ── */
+.admin-role-badge {
+  display: inline-block;
+  padding: 0.25rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.badge-admin {
+  background: rgba(212, 165, 116, 0.15);
+  color: #b8863e;
+}
+
+.badge-instructor {
+  background: rgba(139, 186, 168, 0.15);
+  color: #508a72;
+}
+
+.badge-cliente {
+  background: rgba(232, 180, 184, 0.15);
+  color: var(--deep-rose, #c89099);
+}
+
+/* ── Actions ── */
+.admin-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.admin-btn {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 8px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.admin-btn-edit {
+  background: rgba(232, 180, 184, 0.12);
+  color: var(--deep-rose, #c89099);
+}
+
+.admin-btn-edit:hover {
+  background: rgba(232, 180, 184, 0.25);
+}
+
+.admin-btn-delete {
+  background: rgba(220, 100, 100, 0.08);
+  color: #c06060;
+}
+
+.admin-btn-delete:hover {
+  background: rgba(220, 100, 100, 0.18);
+}
+
+.admin-btn-save {
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+}
+
+.admin-btn-save:hover {
+  background: var(--deep-rose, #c89099);
+}
+
+.admin-btn-cancel {
+  background: rgba(150, 150, 150, 0.1);
+  color: #888;
+}
+
+.admin-btn-cancel:hover {
+  background: rgba(150, 150, 150, 0.2);
+}
+
+.admin-btn-danger {
+  background: #dc6464;
+  color: #fff;
+}
+
+.admin-btn-danger:hover {
+  background: #c05050;
+}
+
+/* ── Inline edit inputs ── */
+.admin-edit-input,
+.admin-edit-select {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border: 1.5px solid rgba(200, 144, 153, 0.25);
+  border-radius: 8px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.78rem;
+  color: var(--charcoal, #2c2c2c);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.admin-edit-input:focus,
+.admin-edit-select:focus {
+  border-color: var(--primary-rose, #e8b4b8);
+}
+
+/* ── Empty state ── */
+.admin-users-empty {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.88rem;
+  color: #bbb;
+  text-align: center;
+  padding: 3rem 0;
+}
+
+/* ── Self badge ── */
+.admin-self-badge {
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  background: rgba(212, 165, 116, 0.12);
+  color: var(--accent-gold, #d4a574);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .admin-users-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .admin-users-table th,
+  .admin-users-table td {
+    font-size: 0.72rem;
+    padding: 0.6rem 0.7rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-users-filters {
+    flex-direction: column;
+  }
+
+  .admin-filter-search {
+    min-width: unset;
+  }
+
+  .admin-page-title {
+    font-size: 1.4rem;
+  }
+}

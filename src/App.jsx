@@ -7,6 +7,9 @@ import AuthCallback from "./pages/AuthCallback";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import Profile from "./pages/Profile/Profile";
+import AdminLayout from "./pages/Admin/AdminLayout";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
+import AdminUsers from "./pages/Admin/AdminUsers";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -21,6 +24,12 @@ function App() {
       <Route path="/recuperar-contrasena" element={<ForgotPassword />} />
       <Route path="/nueva-contrasena" element={<ResetPassword />} />
       <Route path="/perfil" element={<Profile />} />
+
+      {/* Admin */}
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<AdminDashboard />} />
+        <Route path="usuarios" element={<AdminUsers />} />
+      </Route>
     </Routes>
   );
 }

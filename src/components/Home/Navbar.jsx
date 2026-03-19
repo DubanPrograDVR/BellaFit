@@ -9,7 +9,7 @@ import { useToast } from "../../context/ToastContext";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
-  const { user } = useAuth();
+  const { user, isAdmin } = useAuth();
   const navigate = useNavigate();
   const { showToast } = useToast();
 
@@ -109,6 +109,14 @@ const Navbar = () => {
 
                 {userMenuOpen && (
                   <div className="nav-user-dropdown">
+                    {isAdmin && (
+                      <Link
+                        to="/admin"
+                        className="nav-user-dropdown-item"
+                        onClick={closeMenu}>
+                        Panel Admin
+                      </Link>
+                    )}
                     <Link
                       to="/perfil"
                       className="nav-user-dropdown-item"
