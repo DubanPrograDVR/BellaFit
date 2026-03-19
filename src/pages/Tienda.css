@@ -11,7 +11,7 @@
   justify-content: center;
   background: var(--charcoal, #2c2c2c);
   overflow: hidden;
-  margin-top: 100px;
+  margin-top: var(--navbar-height, 72px);
 }
 
 .tienda-hero-overlay {
@@ -628,7 +628,7 @@
 @media (max-width: 600px) {
   .tienda-hero {
     min-height: 40vh;
-    margin-top: 80px;
+    margin-top: var(--navbar-height, 72px);
   }
 
   .tienda-hero-content h1 {

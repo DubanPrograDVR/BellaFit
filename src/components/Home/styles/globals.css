@@ -13,6 +13,7 @@
   --charcoal: #2c2c2c;
   --light-grey: #f0eeec;
   --shadow-subtle: rgba(200, 144, 153, 0.15);
+  --navbar-height: 72px;
 }
 
 body {

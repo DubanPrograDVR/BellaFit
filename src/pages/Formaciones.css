@@ -11,7 +11,7 @@
   justify-content: center;
   background: var(--charcoal, #2c2c2c);
   overflow: hidden;
-  margin-top: 100px;
+  margin-top: var(--navbar-height, 72px);
 }
 
 .formaciones-hero-overlay {
@@ -351,7 +351,7 @@
 @media (max-width: 480px) {
   .formaciones-hero {
     min-height: 40vh;
-    margin-top: 80px;
+    margin-top: var(--navbar-height, 72px);
   }
 
   .formaciones-hero-content h1 {

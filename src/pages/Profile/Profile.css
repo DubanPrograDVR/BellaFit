@@ -6,8 +6,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 80px);
-  margin-top: 80px;
+  min-height: calc(100vh - var(--navbar-height, 72px));
+  margin-top: var(--navbar-height, 72px);
   font-family: "Josefin Sans", sans-serif;
   color: var(--deep-rose, #c89099);
   font-size: 1rem;
@@ -17,7 +17,7 @@
 .perfil-page {
   display: flex;
   min-height: 100vh;
-  margin-top: 80px;
+  margin-top: var(--navbar-height, 72px);
   background: var(--cream, #faf8f6);
 }
 
@@ -34,8 +34,8 @@
   flex-direction: column;
   gap: 1.5rem;
   position: sticky;
-  top: 80px;
-  height: calc(100vh - 80px);
+  top: var(--navbar-height, 72px);
+  height: calc(100vh - var(--navbar-height, 72px));
   overflow-y: auto;
 }
 
