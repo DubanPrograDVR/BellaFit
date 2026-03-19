@@ -9,11 +9,47 @@ export default function AuthCallback() {
 
   useEffect(() => {
     const handleCallback = async () => {
-      const { error } = await supabase.auth.getSession();
+      const {
+        data: { session },
+        error,
+      } = await supabase.auth.getSession();
 
-      if (error) {
+      if (error || !session) {
         setStatus("error");
         return;
+      }
+
+      // Para OAuth (Google): asegurar que el perfil exista en la tabla profiles
+      const user = session.user;
+      const isOAuth = user.app_metadata?.provider !== "email";
+
+      if (isOAuth) {
+        const { data: existingProfile } = await supabase
+          .from("profiles")
+          .select("id")
+          .eq("id", user.id)
+          .single();
+
+        // Si no hay perfil (usuario nuevo vía Google), crearlo
+        if (!existingProfile) {
+          const { data: clienteRole } = await supabase
+            .from("roles")
+            .select("id")
+            .eq("nombre", "cliente")
+            .single();
+
+          await supabase.from("profiles").insert({
+            id: user.id,
+            nombre:
+              user.user_metadata?.full_name || user.user_metadata?.name || "",
+            email: user.email,
+            telefono: "",
+            direccion: "",
+            rut: "",
+            fecha_nacimiento: null,
+            role_id: clienteRole?.id || null,
+          });
+        }
       }
 
       setStatus("success");

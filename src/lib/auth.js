@@ -70,6 +70,41 @@ export async function logout() {
 }
 
 /**
+ * Login con Google OAuth.
+ * Redirige al proveedor de Google; al volver, Supabase vincula
+ * automáticamente la identidad si ya existe una cuenta con el mismo email.
+ */
+export async function loginWithGoogle() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: `${window.location.origin}/auth/callback`,
+    },
+  });
+  return { data, error };
+}
+
+/**
+ * Enviar email de recuperación de contraseña.
+ */
+export async function resetPassword(email) {
+  const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${window.location.origin}/nueva-contrasena`,
+  });
+  return { data, error };
+}
+
+/**
+ * Actualizar contraseña del usuario autenticado (tras reset).
+ */
+export async function updatePassword(newPassword) {
+  const { data, error } = await supabase.auth.updateUser({
+    password: newPassword,
+  });
+  return { data, error };
+}
+
+/**
  * Obtener el perfil completo del usuario actual (con rol).
  */
 export async function getProfile() {
