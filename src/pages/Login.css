@@ -168,6 +168,36 @@
   color: var(--accent-gold, #d4a574);
 }
 
+/* ── Password input wrapper ── */
+.login-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-input-wrap input {
+  width: 100%;
+  padding-right: 2.8rem;
+}
+
+.login-eye-btn {
+  position: absolute;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #b0a0a0;
+  font-size: 0.9rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.login-eye-btn:hover {
+  color: var(--deep-rose, #c89099);
+}
+
 /* ── Error ── */
 .login-error {
   font-family: "Josefin Sans", sans-serif;
