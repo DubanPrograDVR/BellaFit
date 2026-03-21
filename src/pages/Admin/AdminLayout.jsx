@@ -6,6 +6,8 @@ import "./AdminLayout.css";
 const adminNav = [
   { to: "/admin", label: "Dashboard", icon: "📊", end: true },
   { to: "/admin/usuarios", label: "Usuarios", icon: "👥" },
+  { to: "/admin/clases", label: "Clases", icon: "🏋️" },
+  { to: "/admin/horarios", label: "Horarios", icon: "📅" },
 ];
 
 export default function AdminLayout() {

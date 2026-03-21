@@ -1,0 +1,255 @@
+/* ══════════════════════════════════════
+   Admin Schedules
+   ══════════════════════════════════════ */
+
+.admin-sch-loading {
+  font-family: "Josefin Sans", sans-serif;
+  color: var(--deep-rose, #c89099);
+  font-size: 0.9rem;
+  padding: 3rem 0;
+}
+
+.admin-sch-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ── Tabla horarios ── */
+.admin-sch-table-wrap {
+  overflow-x: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(232, 180, 184, 0.1);
+  background: #fff;
+}
+
+.admin-sch-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.82rem;
+}
+
+.admin-sch-table thead {
+  background: rgba(232, 180, 184, 0.06);
+}
+
+.admin-sch-table th {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #999;
+  border-bottom: 1px solid rgba(232, 180, 184, 0.1);
+}
+
+.admin-sch-table td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(232, 180, 184, 0.06);
+  color: var(--charcoal, #2c2c2c);
+  vertical-align: middle;
+}
+
+.admin-sch-table tbody tr:hover {
+  background: rgba(232, 180, 184, 0.03);
+}
+
+.admin-sch-class-name {
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.admin-sch-unassigned {
+  color: #bbb;
+  font-style: italic;
+  font-size: 0.78rem;
+}
+
+.admin-sch-time-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.admin-sch-time-cell input[type="time"] {
+  width: 110px;
+}
+
+/* ── Inline edit dentro de tabla ── */
+.admin-sch-table td select,
+.admin-sch-table td input[type="date"],
+.admin-sch-table td input[type="time"] {
+  padding: 0.4rem 0.6rem;
+  border: 1.5px solid rgba(200, 144, 153, 0.2);
+  border-radius: 8px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.78rem;
+  color: var(--charcoal, #2c2c2c);
+  background: #fff;
+  outline: none;
+}
+
+.admin-sch-table td select:focus,
+.admin-sch-table td input:focus {
+  border-color: var(--primary-rose, #e8b4b8);
+}
+
+/* ── Barra de ocupación ── */
+.admin-occ-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 130px;
+}
+
+.admin-occ-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(232, 180, 184, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.admin-occ-fill {
+  height: 100%;
+  border-radius: 10px;
+  background: var(--accent-gold, #d4a574);
+  transition: width 0.4s ease;
+}
+
+.admin-occ-fill.mid {
+  background: var(--primary-rose, #e8b4b8);
+}
+
+.admin-occ-fill.full {
+  background: #c06060;
+}
+
+.admin-occ-text {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #888;
+  white-space: nowrap;
+}
+
+/* ── Botón "Reservas" ── */
+.admin-btn-view {
+  background: rgba(139, 186, 168, 0.12);
+  color: #508a72;
+}
+
+.admin-btn-view:hover {
+  background: rgba(139, 186, 168, 0.22);
+}
+
+/* ── Panel de reservas ── */
+.admin-res-panel {
+  background: #fff;
+  border: 1px solid rgba(232, 180, 184, 0.1);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.admin-res-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0 0 1rem;
+}
+
+.admin-res-loading,
+.admin-res-empty {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.82rem;
+  color: #999;
+}
+
+.admin-res-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.8rem;
+}
+
+.admin-res-table th {
+  padding: 0.65rem 0.8rem;
+  text-align: left;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #aaa;
+  border-bottom: 1px solid rgba(232, 180, 184, 0.1);
+}
+
+.admin-res-table td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid rgba(232, 180, 184, 0.05);
+  color: var(--charcoal, #2c2c2c);
+}
+
+/* ── Estado badges ── */
+.admin-estado-badge {
+  display: inline-block;
+  padding: 0.18rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.estado-confirmada {
+  background: rgba(139, 186, 168, 0.15);
+  color: #508a72;
+}
+
+.estado-cancelada {
+  background: rgba(220, 100, 100, 0.1);
+  color: #c06060;
+}
+
+.estado-asistida {
+  background: rgba(212, 165, 116, 0.15);
+  color: #b8863e;
+}
+
+.estado-no-asistio {
+  background: rgba(160, 160, 160, 0.12);
+  color: #888;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .admin-sch-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-sch-table-wrap {
+    border-radius: 10px;
+  }
+
+  .admin-sch-table th,
+  .admin-sch-table td {
+    padding: 0.6rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .admin-occ-wrap {
+    min-width: 90px;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-sch-table {
+    font-size: 0.72rem;
+  }
+}

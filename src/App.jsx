@@ -10,6 +10,8 @@ import Profile from "./pages/Profile/Profile";
 import AdminLayout from "./pages/Admin/AdminLayout";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminUsers from "./pages/Admin/AdminUsers";
+import AdminClasses from "./pages/Admin/AdminClasses";
+import AdminSchedules from "./pages/Admin/AdminSchedules";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<AdminDashboard />} />
         <Route path="usuarios" element={<AdminUsers />} />
+        <Route path="clases" element={<AdminClasses />} />
+        <Route path="horarios" element={<AdminSchedules />} />
       </Route>
     </Routes>
   );

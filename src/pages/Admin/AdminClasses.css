@@ -1,0 +1,230 @@
+/* ══════════════════════════════════════
+   Admin Classes
+   ══════════════════════════════════════ */
+
+.admin-classes-loading {
+  font-family: "Josefin Sans", sans-serif;
+  color: var(--deep-rose, #c89099);
+  font-size: 0.9rem;
+  padding: 3rem 0;
+}
+
+.admin-classes-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ── Botón primario ── */
+.admin-btn-primary {
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 10px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+  transition: all 0.25s ease;
+}
+
+.admin-btn-primary:hover {
+  background: var(--deep-rose, #c89099);
+}
+
+/* ── Formulario crear/editar ── */
+.admin-create-form {
+  background: #fff;
+  border: 1px solid rgba(232, 180, 184, 0.12);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.admin-form-full {
+  grid-column: 1 / -1;
+}
+
+.admin-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.admin-form-group label {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #999;
+}
+
+.admin-form-group input,
+.admin-form-group select,
+.admin-form-group textarea {
+  padding: 0.55rem 0.8rem;
+  border: 1.5px solid rgba(200, 144, 153, 0.2);
+  border-radius: 10px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.82rem;
+  color: var(--charcoal, #2c2c2c);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.3s ease;
+  resize: vertical;
+}
+
+.admin-form-group input:focus,
+.admin-form-group select:focus,
+.admin-form-group textarea:focus {
+  border-color: var(--primary-rose, #e8b4b8);
+}
+
+/* ── Cards grid ── */
+.admin-classes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.admin-class-card {
+  background: #fff;
+  border: 1px solid rgba(232, 180, 184, 0.1);
+  border-radius: 14px;
+  padding: 1.3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: box-shadow 0.25s ease;
+}
+
+.admin-class-card:hover {
+  box-shadow: 0 4px 20px rgba(200, 144, 153, 0.1);
+}
+
+.admin-class-card.inactive {
+  opacity: 0.55;
+}
+
+.admin-class-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.admin-class-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0 0 0.4rem;
+}
+
+.admin-class-desc {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.78rem;
+  color: #999;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.admin-class-meta {
+  display: flex;
+  gap: 1.2rem;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.78rem;
+  color: #777;
+}
+
+/* ── Type badges ── */
+.admin-tipo-badge {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-left: 0.5rem;
+}
+
+.badge-bungee {
+  background: rgba(212, 165, 116, 0.15);
+  color: #b8863e;
+}
+
+.badge-yoga {
+  background: rgba(139, 186, 168, 0.15);
+  color: #508a72;
+}
+
+.badge-pilates {
+  background: rgba(162, 139, 186, 0.15);
+  color: #7a5a9e;
+}
+
+.badge-funcional {
+  background: rgba(186, 155, 139, 0.15);
+  color: #8a6650;
+}
+
+.badge-otro {
+  background: rgba(160, 160, 160, 0.12);
+  color: #888;
+}
+
+.admin-inactive-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background: rgba(220, 100, 100, 0.1);
+  color: #c06060;
+  margin-left: 0.4rem;
+}
+
+/* ── Edit inside card ── */
+.admin-class-edit .admin-form-grid {
+  margin-bottom: 0.8rem;
+}
+
+.admin-class-edit .admin-form-group input,
+.admin-class-edit .admin-form-group select,
+.admin-class-edit .admin-form-group textarea {
+  font-size: 0.78rem;
+  padding: 0.45rem 0.7rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .admin-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-classes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-classes-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
