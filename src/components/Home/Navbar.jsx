@@ -9,6 +9,7 @@ import { useToast } from "../../context/ToastContext";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [showTrialModal, setShowTrialModal] = useState(false);
   const { user, isAdmin } = useAuth();
   const navigate = useNavigate();
   const { showToast } = useToast();
@@ -54,9 +55,9 @@ const Navbar = () => {
 
   const isRoute = (href) => href.startsWith("/") && !href.startsWith("/#");
 
-  // Filter out "Iniciar Sesión" if user is logged in
+  // Filter out "Tomar Clase de Prueba" if user is logged in
   const navItems = user
-    ? elementos_navbar.filter((item) => item.enlace !== "/login")
+    ? elementos_navbar.filter((item) => item.enlace !== "#clase-prueba")
     : elementos_navbar;
 
   const userName =
@@ -74,7 +75,16 @@ const Navbar = () => {
           <ul className={`nav-links${menuOpen ? " active" : ""}`}>
             {navItems.map((item, index) => (
               <li key={index}>
-                {isRoute(item.enlace) ? (
+                {item.enlace === "#clase-prueba" ? (
+                  <button
+                    className={`nav-trial-btn ${item.clase || ""}`}
+                    onClick={() => {
+                      closeMenu();
+                      setShowTrialModal(true);
+                    }}>
+                    {item.nombre}
+                  </button>
+                ) : isRoute(item.enlace) ? (
                   <Link
                     to={item.enlace}
                     className={item.clase || ""}
@@ -146,6 +156,41 @@ const Navbar = () => {
 
       {/* Backdrop overlay */}
       {menuOpen && <div className="nav-backdrop" onClick={closeMenu} />}
+
+      {/* Modal Clase de Prueba */}
+      {showTrialModal && (
+        <div className="trial-modal-backdrop" onClick={() => setShowTrialModal(false)}>
+          <div className="trial-modal" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="trial-modal-close"
+              onClick={() => setShowTrialModal(false)}
+              aria-label="Cerrar">
+              ✕
+            </button>
+            <span className="trial-modal-icon">🏋️‍♀️</span>
+            <h2>¡Tu primera clase es gratis!</h2>
+            <p>
+              Ven a conocer BellaFit y vive la experiencia de nuestras clases
+              de Bungee Fitness, Yoga, Pilates y más. Sin compromiso.
+            </p>
+            <p className="trial-modal-sub">
+              Para reservar tu clase de prueba, inicia sesión o crea tu cuenta.
+            </p>
+            <Link
+              to="/login"
+              className="trial-modal-btn"
+              onClick={() => setShowTrialModal(false)}>
+              Iniciar Sesión
+            </Link>
+            <p className="trial-modal-register">
+              ¿No tienes cuenta?{" "}
+              <Link to="/registro" onClick={() => setShowTrialModal(false)}>
+                Regístrate aquí
+              </Link>
+            </p>
+          </div>
+        </div>
+      )}
     </>
   );
 };
