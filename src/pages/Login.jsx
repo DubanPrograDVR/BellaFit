@@ -74,10 +74,10 @@ export default function Login() {
 
       {/* ── Columna derecha: formulario ── */}
       <div className="login-form-col">
+        <Link to="/" className="login-back-btn" aria-label="Volver al inicio">
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </Link>
         <div className="login-form-wrapper">
-          <Link to="/" className="login-back-btn" aria-label="Volver al inicio">
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </Link>
           <img src="/sublogo.png" alt="BellaFit" className="login-sublogo" />
           <span className="login-label">Bienvenida de vuelta</span>
           <h1>Iniciar Sesión</h1>

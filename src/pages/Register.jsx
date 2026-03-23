@@ -230,13 +230,13 @@ export default function Register() {
 
       {/* ── Columna derecha: formulario ── */}
       <div className="register-form-col">
+        <Link
+          to="/"
+          className="register-back-btn"
+          aria-label="Volver al inicio">
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </Link>
         <div className="register-form-wrapper">
-          <Link
-            to="/"
-            className="register-back-btn"
-            aria-label="Volver al inicio">
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </Link>
           <img src="/sublogo.png" alt="BellaFit" className="register-sublogo" />
           <span className="register-label">Únete a BellaFit</span>
           <h1>Crear Cuenta</h1>

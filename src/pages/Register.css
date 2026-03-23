@@ -104,6 +104,7 @@
   padding: 3rem 2.5rem;
   background: var(--cream, #faf8f6);
   overflow-y: auto;
+  position: relative;
 }
 
 .register-form-wrapper {
@@ -114,18 +115,21 @@
 
 /* ── Back button ── */
 .register-back-btn {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   color: var(--charcoal, #2c2c2c);
   background: transparent;
   border: 1.5px solid rgba(44, 44, 44, 0.18);
   text-decoration: none;
   font-size: 0.9rem;
-  margin-bottom: 1.6rem;
+  z-index: 5;
   transition:
     background 0.25s ease,
     color 0.25s ease,
