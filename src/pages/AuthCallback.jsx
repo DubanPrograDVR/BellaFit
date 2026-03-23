@@ -52,6 +52,27 @@ export default function AuthCallback() {
         }
       }
 
+      // Si es OAuth, verificar si el perfil está incompleto
+      if (isOAuth) {
+        const { data: prof } = await supabase
+          .from("profiles")
+          .select("rut, telefono, direccion, fecha_nacimiento")
+          .eq("id", user.id)
+          .single();
+
+        if (
+          prof &&
+          (!prof.rut ||
+            !prof.telefono ||
+            !prof.direccion ||
+            !prof.fecha_nacimiento)
+        ) {
+          setStatus("success");
+          setTimeout(() => navigate("/completar-perfil"), 2000);
+          return;
+        }
+      }
+
       setStatus("success");
       setTimeout(() => navigate("/"), 3000);
     };

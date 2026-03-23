@@ -44,6 +44,14 @@ export function AuthProvider({ children }) {
   const role = profile?.roles?.nombre ?? null;
   const isAdmin = role === "admin";
 
+  // Perfil incompleto: usuario autenticado con campos obligatorios vacíos
+  const profileIncomplete =
+    !!profile &&
+    (!profile.rut ||
+      !profile.telefono ||
+      !profile.direccion ||
+      !profile.fecha_nacimiento);
+
   return (
     <AuthContext.Provider
       value={{
@@ -52,6 +60,7 @@ export function AuthProvider({ children }) {
         profile,
         role,
         isAdmin,
+        profileIncomplete,
         loading,
         refreshProfile: () => fetchProfile(session?.user?.id),
       }}>

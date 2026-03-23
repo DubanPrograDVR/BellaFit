@@ -1,0 +1,208 @@
+/* ══════════════════════════════════════
+   Complete Profile — BellaFit
+   ══════════════════════════════════════ */
+
+.complete-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream, #faf8f6);
+  padding: 2rem;
+}
+
+.complete-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 3rem 2.8rem;
+  max-width: 560px;
+  width: 100%;
+  box-shadow: 0 4px 30px rgba(44, 32, 32, 0.06);
+  border: 1px solid rgba(232, 180, 184, 0.1);
+  text-align: center;
+}
+
+.complete-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(232, 180, 184, 0.12);
+  color: var(--deep-rose, #c89099);
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.complete-card h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0 0 0.8rem;
+  letter-spacing: 1px;
+}
+
+.complete-subtitle {
+  font-family: "Lato", sans-serif;
+  font-size: 0.88rem;
+  color: #8a7a7a;
+  line-height: 1.7;
+  margin: 0 0 1rem;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.complete-line {
+  width: 50px;
+  height: 1px;
+  background: var(--primary-rose, #e8b4b8);
+  margin: 0 auto 1.8rem;
+}
+
+/* ── Form ── */
+.complete-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  text-align: left;
+}
+
+.complete-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.complete-row .complete-field {
+  flex: 1;
+}
+
+.complete-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.complete-field label {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--charcoal, #2c2c2c);
+}
+
+.complete-field input {
+  font-family: "Lato", sans-serif;
+  font-size: 0.88rem;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid rgba(200, 144, 153, 0.25);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--charcoal, #2c2c2c);
+  outline: none;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.complete-field input::placeholder {
+  color: #c0b0b0;
+  font-size: 0.82rem;
+}
+
+.complete-field input:focus {
+  border-color: var(--primary-rose, #e8b4b8);
+  box-shadow: 0 0 0 3px rgba(232, 180, 184, 0.15);
+}
+
+.complete-field input.input-error {
+  border-color: rgba(221, 68, 68, 0.5);
+  box-shadow: 0 0 0 3px rgba(221, 68, 68, 0.1);
+}
+
+.complete-field-error {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.72rem;
+  color: #d44;
+  padding-left: 0.25rem;
+}
+
+.complete-field-hint {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.7rem;
+  color: #b09090;
+  padding-left: 0.25rem;
+}
+
+/* ── Error ── */
+.complete-error {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.78rem;
+  color: #d44;
+  background: rgba(221, 68, 68, 0.06);
+  border: 1px solid rgba(221, 68, 68, 0.15);
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+/* ── Submit ── */
+.complete-submit {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 1rem;
+  border: none;
+  border-radius: 30px;
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.3rem;
+}
+
+.complete-submit:hover:not(:disabled) {
+  background: var(--deep-rose, #c89099);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 144, 153, 0.3);
+}
+
+.complete-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.complete-note {
+  font-family: "Lato", sans-serif;
+  font-size: 0.8rem;
+  color: #bbb;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.complete-note strong {
+  color: var(--deep-rose, #c89099);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .complete-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .complete-card h1 {
+    font-size: 1.8rem;
+  }
+
+  .complete-row {
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+}
