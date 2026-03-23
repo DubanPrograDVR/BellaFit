@@ -397,8 +397,10 @@
 
 .trial-modal-icon {
   display: block;
-  font-size: 3rem;
-  margin-bottom: 1.2rem;
+  width: 110px;
+  height: auto;
+  margin: 0 auto 1.4rem;
+  object-fit: contain;
 }
 
 .trial-modal h2 {

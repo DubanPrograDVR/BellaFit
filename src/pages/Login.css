@@ -78,6 +78,42 @@
 .login-form-wrapper {
   width: 100%;
   max-width: 400px;
+  position: relative;
+}
+
+/* ── Back button ── */
+.login-back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--charcoal, #2c2c2c);
+  background: transparent;
+  border: 1.5px solid rgba(44, 44, 44, 0.18);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 1.6rem;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.login-back-btn:hover {
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+  border-color: var(--primary-rose, #e8b4b8);
+}
+
+/* ── Sublogo ── */
+.login-sublogo {
+  display: block;
+  width: 90px;
+  height: auto;
+  margin: 0 auto 1.4rem;
+  object-fit: contain;
 }
 
 .login-label {
@@ -89,6 +125,7 @@
   color: var(--accent-gold, #d4a574);
   display: block;
   margin-bottom: 0.8rem;
+  text-align: center;
 }
 
 .login-form-wrapper h1 {
@@ -98,13 +135,14 @@
   color: var(--charcoal, #2c2c2c);
   margin: 0;
   letter-spacing: 1px;
+  text-align: center;
 }
 
 .login-line {
   width: 50px;
   height: 1px;
   background: var(--primary-rose, #e8b4b8);
-  margin: 1.5rem 0 2rem;
+  margin: 1.5rem auto 2rem;
 }
 
 /* ── Form ── */

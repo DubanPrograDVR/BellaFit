@@ -3,7 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { register, checkRutAvailable } from "../lib/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEye,
+  faEyeSlash,
+  faArrowLeft,
+} from "@fortawesome/free-solid-svg-icons";
 import "./Register.css";
 
 const INITIAL = {
@@ -227,6 +231,13 @@ export default function Register() {
       {/* ── Columna derecha: formulario ── */}
       <div className="register-form-col">
         <div className="register-form-wrapper">
+          <Link
+            to="/"
+            className="register-back-btn"
+            aria-label="Volver al inicio">
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </Link>
+          <img src="/sublogo.png" alt="BellaFit" className="register-sublogo" />
           <span className="register-label">Únete a BellaFit</span>
           <h1>Crear Cuenta</h1>
           <div className="register-line" />

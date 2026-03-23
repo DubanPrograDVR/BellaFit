@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEye,
+  faEyeSlash,
+  faArrowLeft,
+} from "@fortawesome/free-solid-svg-icons";
 import { login, loginWithGoogle } from "../lib/auth";
 import { useToast } from "../context/ToastContext";
 import "./Login.css";
@@ -71,6 +75,10 @@ export default function Login() {
       {/* ── Columna derecha: formulario ── */}
       <div className="login-form-col">
         <div className="login-form-wrapper">
+          <Link to="/" className="login-back-btn" aria-label="Volver al inicio">
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </Link>
+          <img src="/sublogo.png" alt="BellaFit" className="login-sublogo" />
           <span className="login-label">Bienvenida de vuelta</span>
           <h1>Iniciar Sesión</h1>
           <div className="login-line" />

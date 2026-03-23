@@ -159,7 +159,9 @@ const Navbar = () => {
 
       {/* Modal Clase de Prueba */}
       {showTrialModal && (
-        <div className="trial-modal-backdrop" onClick={() => setShowTrialModal(false)}>
+        <div
+          className="trial-modal-backdrop"
+          onClick={() => setShowTrialModal(false)}>
           <div className="trial-modal" onClick={(e) => e.stopPropagation()}>
             <button
               className="trial-modal-close"
@@ -167,11 +169,15 @@ const Navbar = () => {
               aria-label="Cerrar">
               ✕
             </button>
-            <span className="trial-modal-icon">🏋️‍♀️</span>
+            <img
+              src="/sublogo.png"
+              alt="BellaFit"
+              className="trial-modal-icon"
+            />
             <h2>¡Tu primera clase es gratis!</h2>
             <p>
-              Ven a conocer BellaFit y vive la experiencia de nuestras clases
-              de Bungee Fitness, Yoga, Pilates y más. Sin compromiso.
+              Ven a conocer BellaFit y vive la experiencia de nuestras clases de
+              Bungee Fitness, Yoga, Pilates y más. Sin compromiso.
             </p>
             <p className="trial-modal-sub">
               Para reservar tu clase de prueba, inicia sesión o crea tu cuenta.
