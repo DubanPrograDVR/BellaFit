@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { supabase } from "../lib/supabase";
+import { checkRutAvailable } from "../lib/auth";
 import { useToast } from "../context/ToastContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -51,6 +52,7 @@ export default function CompleteProfile() {
     direccion: "",
   });
   const [rutError, setRutError] = useState("");
+  const [rutChecking, setRutChecking] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -71,9 +73,20 @@ export default function CompleteProfile() {
     }
   };
 
-  const handleRutBlur = () => {
+  const handleRutBlur = async () => {
     if (!form.rut) return;
-    setRutError(validateRut(form.rut) ? "" : "RUT no es válido");
+    if (!validateRut(form.rut)) {
+      setRutError("RUT no es válido");
+      return;
+    }
+    setRutChecking(true);
+    const { available } = await checkRutAvailable(form.rut, user?.id);
+    setRutChecking(false);
+    if (!available) {
+      setRutError("Este RUT ya está registrado en otra cuenta");
+    } else {
+      setRutError("");
+    }
   };
 
   const handleTelefonoChange = (e) => {
@@ -102,16 +115,10 @@ export default function CompleteProfile() {
 
     setLoading(true);
 
-    // Verificar que el RUT no esté ya registrado
+    // Verificar disponibilidad del RUT
     const rutClean = form.rut.replace(/[.\-]/g, "").trim();
-    const { data: existing } = await supabase
-      .from("profiles")
-      .select("id")
-      .eq("rut", rutClean)
-      .neq("id", user.id)
-      .maybeSingle();
-
-    if (existing) {
+    const { available } = await checkRutAvailable(form.rut, user?.id);
+    if (!available) {
       setError("Este RUT ya está registrado en otra cuenta");
       setLoading(false);
       return;
@@ -172,6 +179,9 @@ export default function CompleteProfile() {
                 maxLength={12}
               />
               {rutError && <span className="complete-field-error">{rutError}</span>}
+              {rutChecking && (
+                <span className="complete-field-hint">Verificando RUT…</span>
+              )}
             </div>
             <div className="complete-field">
               <label htmlFor="fecha_nacimiento">Fecha de nacimiento</label>
@@ -214,7 +224,7 @@ export default function CompleteProfile() {
 
           {error && <p className="complete-error">{error}</p>}
 
-          <button type="submit" className="complete-submit" disabled={loading}>
+          <button type="submit" className="complete-submit" disabled={loading || !!rutError}>
             {loading ? "Guardando..." : "Completar Perfil"}
           </button>
         </form>

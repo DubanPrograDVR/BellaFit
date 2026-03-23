@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { register } from "../lib/auth";
+import { register, checkRutAvailable } from "../lib/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -58,6 +58,7 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [rutError, setRutError] = useState("");
+  const [rutChecking, setRutChecking] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -80,9 +81,21 @@ export default function Register() {
     }
   };
 
-  const handleRutBlur = () => {
+  const handleRutBlur = async () => {
     if (!form.rut) return;
-    setRutError(validateRut(form.rut) ? "" : "RUT no es válido");
+    if (!validateRut(form.rut)) {
+      setRutError("RUT no es válido");
+      return;
+    }
+    // Verificar disponibilidad en la BD
+    setRutChecking(true);
+    const { available } = await checkRutAvailable(form.rut);
+    setRutChecking(false);
+    if (!available) {
+      setRutError("Este RUT ya está registrado en otra cuenta");
+    } else {
+      setRutError("");
+    }
   };
 
   // Teléfono: solo dígitos, +, espacios y guión; máx. 15 chars
@@ -125,6 +138,15 @@ export default function Register() {
     }
 
     setLoading(true);
+
+    // Verificar RUT disponible antes de crear la cuenta
+    const { available } = await checkRutAvailable(form.rut);
+    if (!available) {
+      setError("Este RUT ya está registrado en otra cuenta");
+      setLoading(false);
+      return;
+    }
+
     const { error: regError } = await register({
       email: form.email.trim(),
       password: form.password,
@@ -241,6 +263,9 @@ export default function Register() {
                 />
                 {rutError && (
                   <span className="register-field-error">{rutError}</span>
+                )}
+                {rutChecking && (
+                  <span className="register-field-hint">Verificando RUT…</span>
                 )}
               </div>
               <div className="register-field">
@@ -366,7 +391,7 @@ export default function Register() {
             <button
               type="submit"
               className="register-submit"
-              disabled={loading}>
+              disabled={loading || !!rutError}>
               {loading ? "Creando cuenta..." : "Crear Cuenta"}
             </button>
           </form>

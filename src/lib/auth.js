@@ -1,6 +1,24 @@
 import { supabase } from "./supabase";
 
 /**
+ * Verifica si un RUT está disponible (no registrado por otro usuario).
+ * exclude_id: UUID del usuario actual (para excluirse a sí mismo en /completar-perfil).
+ * Retorna { available: boolean }.
+ */
+export async function checkRutAvailable(rut, excludeId = null) {
+  const cleaned = rut.replace(/[.\-]/g, "");
+  if (!cleaned) return { available: true };
+
+  const { data, error } = await supabase.rpc("check_rut_available", {
+    rut_input: cleaned,
+    exclude_id: excludeId,
+  });
+
+  if (error) return { available: false };
+  return { available: data };
+}
+
+/**
  * Login con email o nombre de usuario + contraseña.
  * Si el identificador no contiene "@", busca el email asociado al nombre.
  */
