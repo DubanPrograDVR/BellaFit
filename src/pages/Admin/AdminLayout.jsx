@@ -1,13 +1,18 @@
+import {
+  faChartColumn,
+  faDumbbell,
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Navigate, NavLink, Outlet } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import Navbar from "../../components/Home/Navbar";
 import "./AdminLayout.css";
 
 const adminNav = [
-  { to: "/admin", label: "Dashboard", icon: "📊", end: true },
-  { to: "/admin/usuarios", label: "Usuarios", icon: "👥" },
-  { to: "/admin/clases", label: "Clases", icon: "🏋️" },
-  { to: "/admin/horarios", label: "Horarios", icon: "📅" },
+  { to: "/admin", label: "Dashboard", icon: faChartColumn, end: true },
+  { to: "/admin/usuarios", label: "Usuarios", icon: faUsers },
+  { to: "/admin/clases", label: "Clases", icon: faDumbbell },
 ];
 
 export default function AdminLayout() {
@@ -40,7 +45,9 @@ export default function AdminLayout() {
                 className={({ isActive }) =>
                   `admin-sidebar-link${isActive ? " active" : ""}`
                 }>
-                <span className="admin-sidebar-icon">{item.icon}</span>
+                <span className="admin-sidebar-icon">
+                  <FontAwesomeIcon icon={item.icon} />
+                </span>
                 {item.label}
               </NavLink>
             ))}

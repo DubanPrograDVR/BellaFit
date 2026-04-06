@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { getUsers, getRoles, updateUser, deleteUser } from "../../lib/admin";
+import { supabase } from "../../lib/supabase";
 import { useAuth } from "../../context/AuthContext";
 import { useToast } from "../../context/ToastContext";
 import "./AdminUsers.css";
@@ -28,6 +29,44 @@ export default function AdminUsers() {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  // ── Realtime: profiles ──
+  useEffect(() => {
+    const channel = supabase
+      .channel("admin-users-realtime")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "profiles" },
+        async (payload) => {
+          if (payload.eventType === "DELETE") {
+            setUsers((prev) => prev.filter((u) => u.id !== payload.old.id));
+            return;
+          }
+          // Re-fetch with joins for INSERT/UPDATE
+          const { data } = await supabase
+            .from("profiles")
+            .select("*, roles(id, nombre)")
+            .eq("id", payload.new.id)
+            .single();
+
+          if (!data) return;
+
+          if (payload.eventType === "INSERT") {
+            setUsers((prev) => {
+              if (prev.some((u) => u.id === data.id)) return prev;
+              return [data, ...prev];
+            });
+          } else if (payload.eventType === "UPDATE") {
+            setUsers((prev) => prev.map((u) => (u.id === data.id ? data : u)));
+          }
+        },
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
 
   const filteredUsers = users.filter((u) => {
     const matchSearch =

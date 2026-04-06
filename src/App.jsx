@@ -12,12 +12,11 @@ import AdminLayout from "./pages/Admin/AdminLayout";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminUsers from "./pages/Admin/AdminUsers";
 import AdminClasses from "./pages/Admin/AdminClasses";
-import AdminSchedules from "./pages/Admin/AdminSchedules";
 import {
   RequireCompleteProfile,
   RequireIncompleteProfile,
 } from "./components/RouteGuards";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
   return (
@@ -46,7 +45,10 @@ function App() {
           <Route index element={<AdminDashboard />} />
           <Route path="usuarios" element={<AdminUsers />} />
           <Route path="clases" element={<AdminClasses />} />
-          <Route path="horarios" element={<AdminSchedules />} />
+          <Route
+            path="horarios"
+            element={<Navigate to="/admin/clases" replace />}
+          />
         </Route>
       </Routes>
     </RequireCompleteProfile>

@@ -1,0 +1,584 @@
+/* ══════════════════════════════════════
+   Admin Classes — Redesigned
+   ══════════════════════════════════════ */
+
+/* ── Loading ── */
+.admin-classes-loading {
+  font-family: "Figtree", sans-serif;
+  color: var(--deep-rose, #c89099);
+  font-size: 0.88rem;
+  padding: 3rem 0;
+}
+
+/* ── Page header ── */
+.admin-classes-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-page-title {
+  font-family: "Figtree", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.admin-page-subtitle {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.8rem;
+  color: #aaa;
+  margin: 0.1rem 0 0;
+  font-weight: 400;
+}
+
+/* ── Guide banner ── */
+.admin-classes-guide {
+  margin-bottom: 1.25rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  background: rgba(232, 180, 184, 0.06);
+  border-left: 3px solid var(--primary-rose, #e8b4b8);
+  font-family: "Figtree", sans-serif;
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: #9a8b8b;
+}
+
+/* ── Primary CTA button ── */
+.admin-btn-primary {
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.admin-btn-primary:hover {
+  background: var(--deep-rose, #c89099);
+}
+
+/* ── Create form ── */
+.admin-create-form {
+  background: #fff;
+  border: 1px solid rgba(232, 180, 184, 0.12);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ── Form grid / fields ── */
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+  margin-bottom: 0.75rem;
+}
+
+.admin-form-full {
+  grid-column: 1 / -1;
+}
+
+.admin-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.admin-form-group label {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+.admin-form-group input,
+.admin-form-group select,
+.admin-form-group textarea {
+  padding: 0.48rem 0.7rem;
+  border: 1.5px solid rgba(200, 144, 153, 0.18);
+  border-radius: 8px;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.82rem;
+  color: var(--charcoal, #2c2c2c);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s ease;
+  resize: vertical;
+}
+
+.admin-form-group input:focus,
+.admin-form-group select:focus,
+.admin-form-group textarea:focus {
+  border-color: var(--primary-rose, #e8b4b8);
+}
+
+/* ── Inline panel (schedule inside create form) ── */
+.admin-inline-panel {
+  border: 1px solid rgba(232, 180, 184, 0.1);
+  border-radius: 10px;
+  background: rgba(250, 248, 246, 0.45);
+  padding: 0.9rem;
+}
+
+.admin-inline-panel-header {
+  margin-bottom: 0.6rem;
+}
+
+.admin-inline-panel-header h3 {
+  margin: 0;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--charcoal, #2c2c2c);
+}
+
+.admin-inline-panel-header p {
+  margin: 0.1rem 0 0;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.74rem;
+  color: #aaa;
+}
+
+.admin-inline-panel-kicker {
+  margin: 0 0 0.1rem;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--deep-rose, #c89099);
+}
+
+.admin-schedule-grid {
+  margin-bottom: 0;
+}
+
+/* ── Cards grid ── */
+.admin-classes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+  gap: 0.85rem;
+}
+
+/* ── Class card ── */
+.admin-class-card {
+  background: #fff;
+  border: 1px solid rgba(232, 180, 184, 0.1);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.admin-class-card:hover {
+  box-shadow: 0 3px 14px rgba(200, 144, 153, 0.08);
+}
+
+.admin-class-card.expanded {
+  grid-column: 1 / -1;
+  border-color: rgba(232, 180, 184, 0.16);
+  box-shadow: 0 8px 28px rgba(200, 144, 153, 0.07);
+}
+
+.admin-class-card.editing {
+  padding: 0;
+  overflow: hidden;
+  max-width: 480px;
+}
+
+.admin-class-card.inactive {
+  opacity: 0.6;
+}
+
+/* ── Card top row ── */
+.admin-class-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.admin-class-top-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.admin-class-name {
+  font-family: "Figtree", sans-serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.admin-class-summary-pill {
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(232, 180, 184, 0.1);
+  font-family: "Figtree", sans-serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--deep-rose, #c89099);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.admin-class-desc {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.76rem;
+  color: #999;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ── Card meta with icons ── */
+.admin-class-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.76rem;
+  color: #888;
+}
+
+.admin-class-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.admin-class-meta-item svg {
+  width: 0.72rem;
+  height: 0.72rem;
+  color: var(--deep-rose, #c89099);
+  opacity: 0.65;
+}
+
+/* ── Badges ── */
+.admin-tipo-badge {
+  display: inline-block;
+  padding: 0.14rem 0.5rem;
+  border-radius: 5px;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.badge-bungee {
+  background: rgba(212, 165, 116, 0.12);
+  color: #b8863e;
+}
+.badge-yoga {
+  background: rgba(139, 186, 168, 0.12);
+  color: #508a72;
+}
+.badge-pilates {
+  background: rgba(162, 139, 186, 0.12);
+  color: #7a5a9e;
+}
+.badge-funcional {
+  background: rgba(186, 155, 139, 0.12);
+  color: #8a6650;
+}
+.badge-otro {
+  background: rgba(160, 160, 160, 0.1);
+  color: #888;
+}
+
+.admin-inactive-badge {
+  display: inline-block;
+  padding: 0.14rem 0.45rem;
+  border-radius: 5px;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  background: rgba(220, 100, 100, 0.08);
+  color: #c06060;
+  margin-left: 0.3rem;
+}
+
+/* ── Schedule panel ── */
+.admin-class-schedule-panel {
+  border-top: 1px solid rgba(232, 180, 184, 0.08);
+  padding-top: 0.6rem;
+}
+
+.admin-class-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.admin-class-section-head h4 {
+  margin: 0;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #bbb;
+}
+
+.admin-class-section-head .admin-schedule-count {
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #999;
+  font-size: 0.72rem;
+  margin-left: 0.4rem;
+}
+
+.admin-class-schedule-empty {
+  margin: 0;
+  padding: 0.5rem 0.7rem;
+  border-radius: 7px;
+  background: rgba(250, 248, 246, 0.5);
+  font-family: "Figtree", sans-serif;
+  font-size: 0.74rem;
+  color: #bbb;
+}
+
+/* ── Schedule list ── */
+.admin-schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.admin-schedule-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid rgba(232, 180, 184, 0.06);
+  border-radius: 8px;
+  background: rgba(250, 249, 248, 0.5);
+  font-family: "Figtree", sans-serif;
+  font-size: 0.74rem;
+}
+
+.admin-schedule-item-content {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.admin-schedule-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 5px;
+  background: rgba(212, 165, 116, 0.1);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #b8863e;
+}
+
+.admin-schedule-chip svg {
+  width: 0.6rem;
+  height: 0.6rem;
+}
+
+.admin-schedule-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-weight: 600;
+  color: var(--charcoal, #2c2c2c);
+  font-size: 0.74rem;
+}
+
+.admin-schedule-time svg {
+  width: 0.6rem;
+  height: 0.6rem;
+  color: var(--deep-rose, #c89099);
+  opacity: 0.5;
+}
+
+.admin-schedule-meta-sep {
+  color: #ddd;
+  font-weight: 300;
+}
+
+.admin-schedule-instructor {
+  color: #999;
+  font-size: 0.72rem;
+}
+
+.admin-schedule-occupancy {
+  color: #aaa;
+  font-size: 0.7rem;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.admin-schedule-actions {
+  flex-shrink: 0;
+}
+
+/* ── Schedule editor (compact inline) ── */
+.admin-schedule-editor {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(232, 180, 184, 0.12);
+  background: rgba(255, 254, 253, 0.95);
+  max-width: 480px;
+}
+
+.admin-schedule-editor-title {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0 0 0.5rem;
+}
+
+.admin-schedule-editor .admin-form-grid {
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.admin-schedule-editor .admin-form-group input,
+.admin-schedule-editor .admin-form-group select {
+  padding: 0.4rem 0.55rem;
+  font-size: 0.78rem;
+}
+
+.admin-schedule-editor .admin-form-group label {
+  font-size: 0.6rem;
+}
+
+/* ── Edit class form ── */
+.admin-class-edit {
+  padding: 1.1rem 1.2rem;
+  background: #fff;
+}
+
+.admin-class-edit-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.85rem;
+}
+
+.admin-class-edit-title {
+  margin: 0;
+  font-family: "Figtree", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--charcoal, #2c2c2c);
+}
+
+.admin-class-edit-grid {
+  grid-template-columns: 1fr;
+}
+
+.admin-class-edit .admin-form-grid {
+  margin-bottom: 0.75rem;
+}
+
+.admin-class-edit .admin-form-group input,
+.admin-class-edit .admin-form-group select,
+.admin-class-edit .admin-form-group textarea {
+  font-size: 0.8rem;
+}
+
+.admin-class-edit-actions,
+.admin-class-actions {
+  justify-content: flex-end;
+}
+
+/* ── Override shared btn font ── */
+.admin-classes .admin-btn {
+  font-family: "Figtree", sans-serif;
+}
+
+.admin-classes .admin-filter-search,
+.admin-classes .admin-filter-select {
+  font-family: "Figtree", sans-serif;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .admin-class-edit-header,
+  .admin-class-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-schedule-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-schedule-editor .admin-form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .admin-class-edit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-class-actions,
+  .admin-class-edit-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-schedule-editor .admin-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-classes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-classes-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-create-form,
+  .admin-class-edit,
+  .admin-schedule-editor {
+    padding: 0.75rem;
+  }
+}
