@@ -1,4 +1,5 @@
 import {
+  faBell,
   faBoxOpen,
   faChartColumn,
   faDumbbell,
@@ -15,6 +16,7 @@ const adminNav = [
   { to: "/admin/usuarios", label: "Usuarios", icon: faUsers },
   { to: "/admin/clases", label: "Clases", icon: faDumbbell },
   { to: "/admin/inventario", label: "Inventario", icon: faBoxOpen },
+  { to: "/admin/notificaciones", label: "Notificaciones", icon: faBell },
 ];
 
 export default function AdminLayout() {

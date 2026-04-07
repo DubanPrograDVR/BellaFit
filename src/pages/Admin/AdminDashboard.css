@@ -1,0 +1,270 @@
+/* ══════════════════════════════════════
+   Admin Dashboard
+   ══════════════════════════════════════ */
+
+.dash-loading {
+  font-family: "Figtree", sans-serif;
+  color: var(--deep-rose, #c89099);
+  font-size: 0.88rem;
+  padding: 3rem 0;
+}
+
+.dash-page {
+  font-family: "Figtree", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.dash-header {
+  margin-bottom: 0.25rem;
+}
+
+/* ── KPI Stat Cards ── */
+.dash-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.85rem;
+  justify-items: center;
+}
+
+.dash-stat-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #f0e8e9;
+  padding: 1rem 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: box-shadow 0.2s;
+  width: 100%;
+}
+
+.dash-stat-card:hover {
+  box-shadow: 0 2px 12px rgba(200, 144, 153, 0.1);
+}
+
+.dash-stat-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.dash-icon-sales {
+  background: #e8fce8;
+  color: #3a8a3a;
+}
+.dash-icon-orders {
+  background: #fef3e2;
+  color: #d4930a;
+}
+.dash-icon-stock {
+  background: #e8f4fd;
+  color: #2b7bb9;
+}
+.dash-icon-classes {
+  background: #f3e8fc;
+  color: #8a5ac4;
+}
+.dash-icon-users {
+  background: #fce8f1;
+  color: #c4588a;
+}
+
+.dash-stat-value {
+  font-family: "Figtree", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.dash-stat-label {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.7rem;
+  color: #aaa;
+  margin: 0.1rem 0 0;
+}
+
+/* ── Sales Chart Card ── */
+.dash-chart-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #f0e8e9;
+  padding: 1.1rem 1.25rem;
+}
+
+.dash-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.dash-chart-title {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0;
+}
+
+.dash-chart-toggle {
+  display: flex;
+  gap: 0;
+  border: 1px solid #f0e8e9;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.dash-chart-toggle button {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border: none;
+  background: #fff;
+  color: #aaa;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.dash-chart-toggle button.active {
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+  font-weight: 600;
+}
+
+.dash-chart-toggle button:not(:last-child) {
+  border-right: 1px solid #f0e8e9;
+}
+
+.dash-chart-wrapper {
+  width: 100%;
+}
+
+/* ── Top Classes Section ── */
+.dash-top-classes {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #f0e8e9;
+  padding: 1.1rem 1.25rem;
+}
+
+.dash-section-title {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0 0 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dash-trophy-icon {
+  color: #d4930a;
+  font-size: 0.88rem;
+}
+
+.dash-empty {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.84rem;
+  color: #bbb;
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.dash-classes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dash-class-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid #faf5f6;
+}
+
+.dash-class-row:last-child {
+  border-bottom: none;
+}
+
+.dash-class-rank {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--deep-rose, #c89099);
+  min-width: 28px;
+}
+
+.dash-class-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  min-width: 120px;
+}
+
+.dash-class-name {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--charcoal, #2c2c2c);
+}
+
+.dash-class-type {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.66rem;
+  color: #bbb;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.dash-class-bar-wrapper {
+  flex: 1;
+  height: 8px;
+  background: #f5eff0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.dash-class-bar {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--primary-rose, #e8b4b8),
+    var(--deep-rose, #c89099)
+  );
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.dash-class-count {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #888;
+  white-space: nowrap;
+  min-width: 70px;
+  text-align: right;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .dash-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dash-class-info {
+    min-width: 80px;
+  }
+}

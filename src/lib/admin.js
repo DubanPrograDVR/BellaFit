@@ -283,3 +283,84 @@ export async function uploadProductImage(file) {
 
   return { url: urlData.publicUrl, error: null };
 }
+
+// ── Notificaciones Admin ──
+
+export async function getAllProfiles() {
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("id, nombre, email, fecha_nacimiento, created_at")
+    .order("created_at", { ascending: false });
+  return { data, error };
+}
+
+export async function getRecentReservations(hoursAgo = 48) {
+  const since = new Date(Date.now() - hoursAgo * 60 * 60 * 1000).toISOString();
+  const { data, error } = await supabase
+    .from("reservations")
+    .select(
+      "*, user:profiles!user_id(id, nombre, email), schedule:class_schedules!schedule_id(id, fecha, hora_inicio, hora_fin, classes(nombre, tipo))",
+    )
+    .eq("estado", "confirmada")
+    .gte("created_at", since)
+    .order("created_at", { ascending: false });
+  return { data, error };
+}
+
+export async function getCancelledReservations(hoursAgo = 48) {
+  const since = new Date(Date.now() - hoursAgo * 60 * 60 * 1000).toISOString();
+  const { data, error } = await supabase
+    .from("reservations")
+    .select(
+      "*, user:profiles!user_id(id, nombre, email), schedule:class_schedules!schedule_id(id, fecha, hora_inicio, hora_fin, classes(nombre, tipo))",
+    )
+    .eq("estado", "cancelada")
+    .gte("created_at", since)
+    .order("created_at", { ascending: false });
+  return { data, error };
+}
+
+export async function getLowStockProducts() {
+  const { data, error } = await supabase
+    .from("products")
+    .select("id, nombre, stock, stock_minimo, categoria")
+    .eq("activo", true)
+    .order("stock", { ascending: true });
+  return {
+    data: data?.filter((p) => p.stock <= (p.stock_minimo ?? 5)) || [],
+    error,
+  };
+}
+
+// ── Dashboard Admin ──
+
+export async function getOrders() {
+  const { data, error } = await supabase
+    .from("orders")
+    .select("id, total, estado, created_at")
+    .in("estado", ["pagada", "enviada", "entregada"])
+    .order("created_at", { ascending: false });
+  return { data, error };
+}
+
+export async function getTotalStock() {
+  const { data, error } = await supabase
+    .from("products")
+    .select("stock")
+    .eq("activo", true);
+  const total = data?.reduce((sum, p) => sum + (p.stock || 0), 0) ?? 0;
+  return { total, error };
+}
+
+export async function getMonthReservations() {
+  const now = new Date();
+  const firstDay = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
+  const { data, error } = await supabase
+    .from("reservations")
+    .select(
+      "id, estado, schedule:class_schedules!schedule_id(id, fecha, classes(id, nombre, tipo, capacidad))",
+    )
+    .in("estado", ["confirmada", "asistida"])
+    .gte("created_at", firstDay);
+  return { data, error };
+}
