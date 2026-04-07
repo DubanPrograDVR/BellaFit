@@ -12,6 +12,7 @@ import AdminLayout from "./pages/Admin/AdminLayout";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminUsers from "./pages/Admin/AdminUsers";
 import AdminClasses from "./pages/Admin/AdminClasses";
+import AdminInventario from "./pages/Admin/Inventario";
 import {
   RequireCompleteProfile,
   RequireIncompleteProfile,
@@ -45,6 +46,7 @@ function App() {
           <Route index element={<AdminDashboard />} />
           <Route path="usuarios" element={<AdminUsers />} />
           <Route path="clases" element={<AdminClasses />} />
+          <Route path="inventario" element={<AdminInventario />} />
           <Route
             path="horarios"
             element={<Navigate to="/admin/clases" replace />}

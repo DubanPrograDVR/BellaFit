@@ -141,3 +141,145 @@ export async function getReservationsBySchedule(scheduleId) {
     .order("created_at", { ascending: false });
   return { data, error };
 }
+
+// ── Productos (inventario) ──
+
+export async function getProducts() {
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .order("created_at", { ascending: false });
+  return { data, error };
+}
+
+export async function createProduct(productData) {
+  const { data, error } = await supabase
+    .from("products")
+    .insert(productData)
+    .select()
+    .single();
+  return { data, error };
+}
+
+export async function updateProduct(id, updates) {
+  const { data, error } = await supabase
+    .from("products")
+    .update(updates)
+    .eq("id", id)
+    .select()
+    .single();
+  return { data, error };
+}
+
+export async function deleteProduct(id) {
+  const { error } = await supabase.from("products").delete().eq("id", id);
+  return { error };
+}
+
+// ── Packs / Combos ──
+
+export async function getPacks() {
+  const { data, error } = await supabase
+    .from("product_packs")
+    .select(
+      "*, pack_items(*, product:products(id, nombre, precio, imagen_url))",
+    )
+    .order("created_at", { ascending: false });
+  return { data, error };
+}
+
+export async function createPack(packData, items) {
+  const { data: pack, error: packError } = await supabase
+    .from("product_packs")
+    .insert(packData)
+    .select()
+    .single();
+
+  if (packError || !pack) return { data: null, error: packError };
+
+  if (items.length > 0) {
+    const packItems = items.map((item) => ({
+      pack_id: pack.id,
+      product_id: item.product_id,
+      cantidad: item.cantidad,
+    }));
+
+    const { error: itemsError } = await supabase
+      .from("pack_items")
+      .insert(packItems);
+
+    if (itemsError) return { data: pack, error: itemsError };
+  }
+
+  // Re-fetch with joins
+  const { data, error } = await supabase
+    .from("product_packs")
+    .select(
+      "*, pack_items(*, product:products(id, nombre, precio, imagen_url))",
+    )
+    .eq("id", pack.id)
+    .single();
+
+  return { data, error };
+}
+
+export async function updatePack(id, packData, items) {
+  const { error: packError } = await supabase
+    .from("product_packs")
+    .update(packData)
+    .eq("id", id);
+
+  if (packError) return { error: packError };
+
+  // Replace pack items
+  await supabase.from("pack_items").delete().eq("pack_id", id);
+
+  if (items.length > 0) {
+    const packItems = items.map((item) => ({
+      pack_id: id,
+      product_id: item.product_id,
+      cantidad: item.cantidad,
+    }));
+
+    const { error: itemsError } = await supabase
+      .from("pack_items")
+      .insert(packItems);
+
+    if (itemsError) return { error: itemsError };
+  }
+
+  const { data, error } = await supabase
+    .from("product_packs")
+    .select(
+      "*, pack_items(*, product:products(id, nombre, precio, imagen_url))",
+    )
+    .eq("id", id)
+    .single();
+
+  return { data, error };
+}
+
+export async function deletePack(id) {
+  const { error } = await supabase.from("product_packs").delete().eq("id", id);
+  return { error };
+}
+
+// ── Imagen de producto (Storage) ──
+
+export async function uploadProductImage(file) {
+  const ext = file.name.split(".").pop();
+  const fileName = `${crypto.randomUUID()}.${ext}`;
+  const path = `products/${fileName}`;
+
+  const { error } = await supabase.storage
+    .from("products")
+    .upload(path, file, { cacheControl: "3600", upsert: false });
+
+  if (error) return { url: null, error };
+
+  const { data: urlData } = supabase.storage
+    .from("products")
+    .getPublicUrl(path);
+
+  return { url: urlData.publicUrl, error: null };
+}

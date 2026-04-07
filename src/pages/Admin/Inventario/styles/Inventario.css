@@ -1,0 +1,604 @@
+/* ══════════════════════════════════════
+   Inventario — Admin Module
+   ══════════════════════════════════════ */
+
+.inv-loading {
+  font-family: "Figtree", sans-serif;
+  color: var(--deep-rose, #c89099);
+  font-size: 0.88rem;
+  padding: 3rem 0;
+}
+
+.inv-page {
+  font-family: "Figtree", sans-serif;
+}
+
+/* ── Header ── */
+.inv-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.inv-header-actions {
+  flex-shrink: 0;
+}
+
+/* ── Tabs ── */
+.inv-tabs {
+  width: 100%;
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid #f0e8e9;
+  margin-bottom: 1rem;
+}
+
+.inv-tab {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.55rem 1.1rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.inv-tab:hover {
+  color: var(--charcoal, #2c2c2c);
+}
+
+.inv-tab.active {
+  color: var(--deep-rose, #c89099);
+  border-bottom-color: var(--deep-rose, #c89099);
+  font-weight: 600;
+}
+
+.inv-tab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: #e85d5d;
+  color: #fff;
+}
+
+/* ── Grid ── */
+.inv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* ── Cards ── */
+.inv-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #f0e8e9;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: box-shadow 0.2s;
+}
+
+.inv-card:hover {
+  box-shadow: 0 2px 12px rgba(200, 144, 153, 0.1);
+}
+
+.inv-card.editing {
+  max-width: 480px;
+  border-color: var(--primary-rose, #e8b4b8);
+}
+
+.inv-card-top {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.inv-card-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.inv-card-img-placeholder {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  background: #f8f2f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #d4b5b9;
+  flex-shrink: 0;
+}
+
+.inv-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.inv-card-name {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0 0 0.25rem;
+  line-height: 1.2;
+}
+
+.inv-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.inv-card-desc {
+  font-size: 0.76rem;
+  color: #999;
+  margin: 0.3rem 0 0;
+  line-height: 1.35;
+}
+
+/* ── Category badges ── */
+.inv-cat-badge {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.inv-badge-equipo { background: #e8f4fd; color: #2b7bb9; }
+.inv-badge-ropa { background: #fce8f1; color: #c4588a; }
+.inv-badge-accesorios { background: #fef3e2; color: #b8860b; }
+.inv-badge-suplementos { background: #e8fce8; color: #3a8a3a; }
+.inv-badge-botellas { background: #e8f0fe; color: #4a6fa5; }
+.inv-badge-giftcards { background: #f3e8fc; color: #8a5ac4; }
+
+.inv-product-badge {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.12rem 0.4rem;
+  border-radius: 4px;
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.inv-inactive-badge {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  padding: 0.12rem 0.4rem;
+  border-radius: 4px;
+  background: #eee;
+  color: #999;
+}
+
+/* ── Price ── */
+.inv-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inv-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.inv-price {
+  font-family: "Figtree", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--charcoal, #2c2c2c);
+}
+
+.inv-price-old {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.82rem;
+  color: #bbb;
+  text-decoration: line-through;
+}
+
+/* ── Stock controls ── */
+.inv-stock-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.inv-stock-row.low .inv-stock-value {
+  color: #e85d5d;
+  font-weight: 700;
+}
+
+.inv-stock-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid #e8d8da;
+  background: #fdfafa;
+  color: var(--charcoal, #2c2c2c);
+  font-size: 0.7rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.inv-stock-btn:hover {
+  background: #f3e8ea;
+}
+
+.inv-stock-value {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  min-width: 28px;
+  text-align: center;
+  color: var(--charcoal, #2c2c2c);
+}
+
+.inv-low-label {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #e85d5d;
+  margin-left: 0.25rem;
+}
+
+/* ── Card actions ── */
+.inv-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-top: 1px solid #f5eff0;
+  padding-top: 0.6rem;
+  margin-top: auto;
+}
+
+.inv-confirm-text {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #e85d5d;
+}
+
+/* ── Create wrapper ── */
+.inv-create-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--primary-rose, #e8b4b8);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  max-width: 520px;
+}
+
+.inv-section-title {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0 0 0.75rem;
+}
+
+/* ── Forms ── */
+.inv-form .admin-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+
+.inv-form .admin-form-group label {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.2rem;
+  display: block;
+}
+
+.inv-form .admin-form-group input,
+.inv-form .admin-form-group select,
+.inv-form .admin-form-group textarea {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.82rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: 8px;
+  border: 1px solid #e8d8da;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+  background: #fdfafa;
+}
+
+.inv-form .admin-form-group input:focus,
+.inv-form .admin-form-group select:focus,
+.inv-form .admin-form-group textarea:focus {
+  border-color: var(--primary-rose, #e8b4b8);
+}
+
+.inv-form .admin-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+/* ── Image upload ── */
+.inv-image-upload {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.inv-image-preview {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.inv-image-upload input[type="file"] {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.76rem;
+}
+
+.inv-uploading {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.74rem;
+  color: var(--deep-rose, #c89099);
+}
+
+/* ── Pack items in cards ── */
+.inv-pack-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.inv-pack-items li {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.76rem;
+  color: #777;
+}
+
+/* ── Pack editor ── */
+.inv-pack-editor {
+  margin-top: 0.5rem;
+}
+
+.inv-pack-editor > label {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #666;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.inv-pack-items-edit {
+  list-style: none;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.inv-pack-item-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem;
+  background: #fdfafa;
+  border-radius: 8px;
+  border: 1px solid #f0e8e9;
+}
+
+.inv-pack-item-name {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.78rem;
+  color: var(--charcoal, #2c2c2c);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inv-qty-control {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.inv-qty-control button {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  border: 1px solid #e8d8da;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--charcoal, #2c2c2c);
+}
+
+.inv-qty-control span {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  min-width: 18px;
+  text-align: center;
+}
+
+.inv-pack-remove {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  border: none;
+  background: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s;
+}
+
+.inv-pack-remove:hover {
+  color: #e85d5d;
+}
+
+.inv-pack-add-select {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #e8d8da;
+  background: #fdfafa;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* ── Alerts ── */
+.inv-alerts-empty {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.inv-alerts-empty p {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.88rem;
+  color: #aaa;
+}
+
+.inv-alerts-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  background: #fef3f2;
+  border-radius: 8px;
+  border: 1px solid #fde0de;
+  margin-bottom: 1rem;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #c0392b;
+}
+
+.inv-alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inv-alert-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.65rem 0.85rem;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #f0e8e9;
+}
+
+.inv-alert-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.inv-alert-name {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--charcoal, #2c2c2c);
+}
+
+.inv-alert-cat {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.7rem;
+  color: #aaa;
+}
+
+.inv-alert-stock {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.inv-stock-min {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.68rem;
+  color: #bbb;
+  margin-left: 0.2rem;
+}
+
+.inv-alert-price {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--charcoal, #2c2c2c);
+  white-space: nowrap;
+}
+
+/* ── Empty state ── */
+.inv-empty {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.84rem;
+  color: #aaa;
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .inv-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inv-alert-row {
+    flex-wrap: wrap;
+  }
+}
