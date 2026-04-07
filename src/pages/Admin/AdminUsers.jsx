@@ -1,5 +1,15 @@
 import { useState, useEffect, useCallback } from "react";
 import { getUsers, getRoles, updateUser, deleteUser } from "../../lib/admin";
+
+function formatRut(rut) {
+  if (!rut) return "—";
+  const clean = rut.toString().replace(/[^0-9kK]/g, "");
+  if (clean.length < 2) return rut;
+  const body = clean.slice(0, -1);
+  const dv = clean.slice(-1).toUpperCase();
+  const formatted = body.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  return `${formatted}-${dv}`;
+}
 import { supabase } from "../../lib/supabase";
 import { useAuth } from "../../context/AuthContext";
 import { useToast } from "../../context/ToastContext";
@@ -296,7 +306,7 @@ export default function AdminUsers() {
                       </td>
                       <td>{user.email}</td>
                       <td>{user.telefono || "—"}</td>
-                      <td>{user.rut || "—"}</td>
+                      <td>{formatRut(user.rut)}</td>
                       <td>
                         <span
                           className={`admin-role-badge ${getRoleBadgeClass(user.roles?.nombre)}`}>
