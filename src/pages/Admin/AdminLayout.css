@@ -37,13 +37,16 @@
 }
 
 .admin-sidebar-title {
-  font-family: "Figtree", sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--charcoal, #2c2c2c);
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(232, 180, 184, 0.15);
-  letter-spacing: -0.01em;
+}
+
+.admin-sidebar-logo {
+  height: 72px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  margin: 0 auto;
 }
 
 .admin-sidebar-nav {

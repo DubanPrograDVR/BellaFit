@@ -37,7 +37,13 @@ export default function AdminLayout() {
       <Navbar />
       <div className="admin-page">
         <aside className="admin-sidebar">
-          <div className="admin-sidebar-title">Panel Admin</div>
+          <div className="admin-sidebar-title">
+            <img
+              src="/sublogo.png"
+              alt="BellaFit"
+              className="admin-sidebar-logo"
+            />
+          </div>
           <nav className="admin-sidebar-nav">
             {adminNav.map((item) => (
               <NavLink
