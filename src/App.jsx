@@ -13,6 +13,7 @@ import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminUsers from "./pages/Admin/AdminUsers";
 import AdminClasses from "./pages/Admin/AdminClasses";
 import AdminInventario from "./pages/Admin/Inventario";
+import AdminNotificaciones from "./pages/Admin/Notificaciones";
 import {
   RequireCompleteProfile,
   RequireIncompleteProfile,
@@ -47,6 +48,7 @@ function App() {
           <Route path="usuarios" element={<AdminUsers />} />
           <Route path="clases" element={<AdminClasses />} />
           <Route path="inventario" element={<AdminInventario />} />
+          <Route path="notificaciones" element={<AdminNotificaciones />} />
           <Route
             path="horarios"
             element={<Navigate to="/admin/clases" replace />}

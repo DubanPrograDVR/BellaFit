@@ -1,0 +1,179 @@
+/* ══════════════════════════════════════
+   Notificaciones — Admin
+   ══════════════════════════════════════ */
+
+.notif-loading {
+  font-family: "Figtree", sans-serif;
+  color: var(--deep-rose, #c89099);
+  font-size: 0.88rem;
+  padding: 3rem 0;
+}
+
+.notif-page {
+  font-family: "Figtree", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.notif-header {
+  margin-bottom: 0.25rem;
+}
+
+/* ── Empty state ── */
+.notif-empty {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.notif-empty p {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.92rem;
+  color: #bbb;
+}
+
+/* ── Section card ── */
+.notif-section {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #f0e8e9;
+  overflow: hidden;
+}
+
+.notif-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f5eff0;
+}
+
+.notif-section-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  flex-shrink: 0;
+}
+
+.notif-icon-birthday {
+  background: #fef3e2;
+  color: #d4930a;
+}
+
+.notif-icon-reservation {
+  background: #e8fce8;
+  color: #3a8a3a;
+}
+
+.notif-icon-cancelled {
+  background: #fef3f2;
+  color: #c0392b;
+}
+
+.notif-icon-stock {
+  background: #e8f4fd;
+  color: #2b7bb9;
+}
+
+.notif-icon-user {
+  background: #f3e8fc;
+  color: #8a5ac4;
+}
+
+.notif-section-title {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0;
+  flex: 1;
+}
+
+.notif-section-count {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+  padding: 0 6px;
+}
+
+/* ── Items ── */
+.notif-section-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.notif-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid #faf5f6;
+  transition: background 0.15s;
+}
+
+.notif-item:last-child {
+  border-bottom: none;
+}
+
+.notif-item:hover {
+  background: #fdfafa;
+}
+
+.notif-item-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.notif-item-name {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--charcoal, #2c2c2c);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notif-item-detail {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.72rem;
+  color: #aaa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notif-item-meta {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #bbb;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.notif-stock-low {
+  color: #e85d5d;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .notif-item {
+    flex-wrap: wrap;
+  }
+}
