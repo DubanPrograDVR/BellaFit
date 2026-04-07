@@ -43,6 +43,7 @@ export function AuthProvider({ children }) {
 
   const role = profile?.roles?.nombre ?? null;
   const isAdmin = role === "admin";
+  const isInstructor = role === "instructor";
 
   // Perfil incompleto: usuario autenticado con campos obligatorios vacíos
   const profileIncomplete =
@@ -60,6 +61,7 @@ export function AuthProvider({ children }) {
         profile,
         role,
         isAdmin,
+        isInstructor,
         profileIncomplete,
         loading,
         refreshProfile: () => fetchProfile(session?.user?.id),

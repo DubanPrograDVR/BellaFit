@@ -14,6 +14,11 @@ import AdminUsers from "./pages/Admin/AdminUsers";
 import AdminClasses from "./pages/Admin/AdminClasses";
 import AdminInventario from "./pages/Admin/Inventario";
 import AdminNotificaciones from "./pages/Admin/Notificaciones";
+import InstructorLayout from "./pages/Instructor/InstructorLayout";
+import InstructorCalendario from "./pages/Instructor/InstructorCalendario";
+import InstructorAsistencia from "./pages/Instructor/InstructorAsistencia";
+import InstructorObservaciones from "./pages/Instructor/InstructorObservaciones";
+import InstructorEstadisticas from "./pages/Instructor/InstructorEstadisticas";
 import {
   RequireCompleteProfile,
   RequireIncompleteProfile,
@@ -53,6 +58,14 @@ function App() {
             path="horarios"
             element={<Navigate to="/admin/clases" replace />}
           />
+        </Route>
+
+        {/* Instructor */}
+        <Route path="/instructor" element={<InstructorLayout />}>
+          <Route index element={<InstructorCalendario />} />
+          <Route path="asistencia" element={<InstructorAsistencia />} />
+          <Route path="observaciones" element={<InstructorObservaciones />} />
+          <Route path="estadisticas" element={<InstructorEstadisticas />} />
         </Route>
       </Routes>
     </RequireCompleteProfile>

@@ -10,7 +10,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [showTrialModal, setShowTrialModal] = useState(false);
-  const { user, isAdmin } = useAuth();
+  const { user, isAdmin, isInstructor } = useAuth();
   const navigate = useNavigate();
   const { showToast } = useToast();
 
@@ -125,6 +125,14 @@ const Navbar = () => {
                         className="nav-user-dropdown-item"
                         onClick={closeMenu}>
                         Panel Admin
+                      </Link>
+                    )}
+                    {isInstructor && (
+                      <Link
+                        to="/instructor"
+                        className="nav-user-dropdown-item"
+                        onClick={closeMenu}>
+                        Panel Instructor
                       </Link>
                     )}
                     <Link

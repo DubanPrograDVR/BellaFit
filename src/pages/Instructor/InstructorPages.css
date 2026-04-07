@@ -1,0 +1,674 @@
+/* ══════════════════════════════════════
+   Instructor Pages — Shared Styles
+   ══════════════════════════════════════ */
+
+/* ── Common ── */
+.inst-loading-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  font-family: "Figtree", sans-serif;
+  color: var(--deep-rose, #c89099);
+  font-size: 0.9rem;
+}
+
+.inst-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.inst-title {
+  font-family: "Figtree", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--charcoal, #2c2c2c);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.inst-title-icon {
+  color: var(--deep-rose, #c89099);
+  font-size: 1.2rem;
+}
+
+.inst-subtitle {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.82rem;
+  color: #8a7a7a;
+  margin: 0.3rem 0 0;
+}
+
+.inst-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #8a7a7a;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.9rem;
+}
+
+.inst-loading-small,
+.inst-empty-small {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.8rem;
+  color: #8a7a7a;
+  padding: 0.6rem 0;
+}
+
+/* ── Filters / Select ── */
+.inst-filters {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.inst-select {
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(232, 180, 184, 0.3);
+  font-family: "Figtree", sans-serif;
+  font-size: 0.8rem;
+  background: #fff;
+  color: var(--charcoal, #2c2c2c);
+  cursor: pointer;
+}
+
+.inst-select:focus {
+  outline: none;
+  border-color: var(--primary-rose, #e8b4b8);
+}
+
+.inst-select-wrap {
+  margin-bottom: 1.2rem;
+}
+
+.inst-select-full {
+  width: 100%;
+  max-width: 480px;
+}
+
+.inst-label {
+  display: block;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #8a7a7a;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.inst-sel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.8rem 1rem;
+  background: rgba(232, 180, 184, 0.06);
+  border-radius: 10px;
+  border: 1px solid rgba(232, 180, 184, 0.15);
+  margin-bottom: 1rem;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.85rem;
+  color: var(--charcoal);
+}
+
+.inst-sel-info strong {
+  font-weight: 600;
+}
+
+.inst-sel-info span {
+  font-size: 0.78rem;
+  color: #8a7a7a;
+}
+
+/* ── Buttons ── */
+.inst-btn {
+  padding: 0.55rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.inst-btn:hover {
+  background: var(--deep-rose, #c89099);
+}
+
+.inst-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.inst-btn-all {
+  margin-bottom: 1rem;
+  background: #4caf50;
+}
+
+.inst-btn-all:hover {
+  background: #388e3c;
+}
+
+.inst-btn-delete {
+  padding: 0.3rem 0.5rem;
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: color 0.2s;
+}
+
+.inst-btn-delete:hover {
+  color: #e57373;
+}
+
+/* ── Calendario ── */
+.inst-grupo {
+  margin-bottom: 1.5rem;
+}
+
+.inst-grupo-label {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--deep-rose, #c89099);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 0.7rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(232, 180, 184, 0.15);
+}
+
+.inst-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0.8rem;
+}
+
+.inst-cal-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #f0e8e9;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.inst-cal-card:hover {
+  box-shadow: 0 4px 16px rgba(200, 144, 153, 0.1);
+}
+
+.inst-cal-card-main {
+  padding: 1rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.inst-cal-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.inst-cal-nombre {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--charcoal, #2c2c2c);
+}
+
+.inst-tipo-badge {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+}
+
+.tipo-bungee {
+  background: #fce4ec;
+  color: #c62828;
+}
+.tipo-yoga {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.tipo-pilates {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+.tipo-funcional {
+  background: #fff3e0;
+  color: #e65100;
+}
+.tipo-otro {
+  background: #f3e5f5;
+  color: #6a1b9a;
+}
+
+.inst-cal-card-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.78rem;
+  color: #8a7a7a;
+  margin-bottom: 0.6rem;
+}
+
+.inst-cal-card-info svg {
+  margin-right: 0.2rem;
+  font-size: 0.7rem;
+}
+
+.inst-ocupacion-bar {
+  height: 4px;
+  background: #f0e8e9;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.inst-ocupacion-fill {
+  height: 100%;
+  background: var(--primary-rose, #e8b4b8);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.inst-ocupacion-fill.mid {
+  background: #ffb74d;
+}
+.inst-ocupacion-fill.full {
+  background: #ef5350;
+}
+
+.inst-expand-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #ccc;
+  font-size: 0.7rem;
+}
+
+.inst-cal-card-detail {
+  padding: 0.8rem 1rem 1rem;
+  background: rgba(250, 248, 246, 0.5);
+  border-top: 1px solid #f0e8e9;
+}
+
+.inst-cal-card-detail h4 {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin: 0 0 0.5rem;
+}
+
+.inst-alumnas-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.inst-alumnas-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.78rem;
+  border-bottom: 1px solid rgba(232, 180, 184, 0.08);
+}
+
+.inst-alumna-nombre {
+  font-weight: 500;
+  color: var(--charcoal);
+}
+
+.inst-alumna-email {
+  font-size: 0.72rem;
+  color: #8a7a7a;
+}
+
+/* ── Estado badges ── */
+.inst-estado-badge {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+}
+
+.estado-confirmada {
+  background: #fff8e1;
+  color: #f9a825;
+}
+.estado-asistida {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.estado-no_asistio {
+  background: #ffebee;
+  color: #c62828;
+}
+.estado-cancelada {
+  background: #f5f5f5;
+  color: #9e9e9e;
+}
+
+/* ── Asistencia ── */
+.inst-attendance-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inst-attendance-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #f0e8e9;
+  gap: 0.8rem;
+}
+
+.inst-attendance-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.inst-attendance-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.inst-btn-att {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.inst-btn-ok {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.inst-btn-ok:hover {
+  background: #c8e6c9;
+}
+
+.inst-btn-no {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.inst-btn-no:hover {
+  background: #ffcdd2;
+}
+
+/* ── Observaciones ── */
+.inst-obs-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.inst-textarea {
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: 1px solid rgba(232, 180, 184, 0.3);
+  font-family: "Figtree", sans-serif;
+  font-size: 0.82rem;
+  resize: vertical;
+  min-height: 80px;
+  background: #fff;
+  color: var(--charcoal);
+}
+
+.inst-textarea:focus {
+  outline: none;
+  border-color: var(--primary-rose, #e8b4b8);
+}
+
+.inst-obs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.inst-obs-card {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #f0e8e9;
+  padding: 1rem;
+}
+
+.inst-obs-text {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.85rem;
+  color: var(--charcoal);
+  line-height: 1.6;
+  margin: 0 0 0.5rem;
+}
+
+.inst-obs-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inst-obs-date {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.7rem;
+  color: #aaa;
+}
+
+/* ── Estadísticas ── */
+.inst-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.inst-stat-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #f0e8e9;
+  padding: 1rem 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: box-shadow 0.2s;
+}
+
+.inst-stat-card:hover {
+  box-shadow: 0 4px 16px rgba(200, 144, 153, 0.1);
+}
+
+.inst-stat-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.inst-icon-clases {
+  background: #fce4ec;
+  color: #c62828;
+}
+.inst-icon-asistencia {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.inst-icon-alumnas {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+.inst-icon-proxima {
+  background: #f3e8fc;
+  color: #8a5ac4;
+}
+
+.inst-stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.inst-stat-value {
+  font-family: "Figtree", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--charcoal, #2c2c2c);
+  line-height: 1.2;
+}
+
+.inst-stat-label {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.7rem;
+  color: #8a7a7a;
+  margin-top: 0.1rem;
+}
+
+/* ── Resumen table ── */
+.inst-resumen-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #f0e8e9;
+  padding: 1.2rem;
+}
+
+.inst-resumen-title {
+  font-family: "Figtree", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin: 0 0 1rem;
+}
+
+.inst-resumen-table-wrap {
+  overflow-x: auto;
+}
+
+.inst-resumen-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.8rem;
+}
+
+.inst-resumen-table th {
+  text-align: left;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #8a7a7a;
+  font-weight: 600;
+  border-bottom: 1px solid #f0e8e9;
+}
+
+.inst-resumen-table td {
+  padding: 0.7rem 0.8rem;
+  color: var(--charcoal);
+  border-bottom: 1px solid rgba(232, 180, 184, 0.08);
+}
+
+.inst-resumen-nombre {
+  font-weight: 600;
+}
+
+.inst-pct-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.inst-pct-bar {
+  width: 60px;
+  height: 6px;
+  background: #f0e8e9;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.inst-pct-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+
+.inst-pct-fill.high {
+  background: #4caf50;
+}
+.inst-pct-fill.mid {
+  background: #ffb74d;
+}
+.inst-pct-fill.low {
+  background: #ef5350;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .inst-header {
+    flex-direction: column;
+  }
+
+  .inst-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inst-stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .inst-attendance-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .inst-attendance-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
