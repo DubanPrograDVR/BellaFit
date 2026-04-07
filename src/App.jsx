@@ -1,6 +1,7 @@
 import Home from "./components/Home/Home";
 import Formaciones from "./pages/Formaciones";
 import Tienda from "./pages/Tienda";
+import Clases from "./pages/Clases";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AuthCallback from "./pages/AuthCallback";
@@ -30,6 +31,7 @@ function App() {
     <RequireCompleteProfile>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/clases" element={<Clases />} />
         <Route path="/formaciones" element={<Formaciones />} />
         <Route path="/tienda" element={<Tienda />} />
         <Route path="/login" element={<Login />} />

@@ -1,0 +1,629 @@
+/* ══════════════════════════════════════
+   Clases — Reserva pública
+   ══════════════════════════════════════ */
+
+.clases-page {
+  padding-top: var(--navbar-height, 72px);
+  min-height: 100vh;
+  background: var(--cream, #faf8f6);
+}
+
+.clases-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* ── Header ── */
+.clases-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.clases-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--charcoal, #2c2c2c);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.clases-subtitle {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.88rem;
+  color: #8a7a7a;
+  margin: 0.3rem 0 0;
+}
+
+.clases-legend {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.clases-legend-item {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.72rem;
+  color: #8a7a7a;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.legend-available {
+  color: #4caf50;
+  font-size: 0.5rem;
+}
+.legend-full {
+  color: #ef5350;
+  font-size: 0.5rem;
+}
+.legend-reserved {
+  color: var(--primary-rose, #e8b4b8);
+  font-size: 0.5rem;
+}
+
+/* ── Filters ── */
+.clases-filters {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.2rem;
+}
+
+.clases-search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.clases-search-icon {
+  position: absolute;
+  left: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ccc;
+  font-size: 0.8rem;
+}
+
+.clases-search {
+  width: 100%;
+  padding: 0.6rem 0.8rem 0.6rem 2.2rem;
+  border-radius: 10px;
+  border: 1px solid rgba(232, 180, 184, 0.3);
+  font-family: "Figtree", sans-serif;
+  font-size: 0.82rem;
+  background: #fff;
+  color: var(--charcoal);
+}
+
+.clases-search:focus {
+  outline: none;
+  border-color: var(--primary-rose);
+}
+
+.clases-select {
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid rgba(232, 180, 184, 0.3);
+  font-family: "Figtree", sans-serif;
+  font-size: 0.82rem;
+  background: #fff;
+  color: var(--charcoal);
+  cursor: pointer;
+  min-width: 140px;
+}
+
+.clases-select:focus {
+  outline: none;
+  border-color: var(--primary-rose);
+}
+
+.clases-clear-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  border: 1px solid rgba(232, 180, 184, 0.3);
+  background: #fff;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.82rem;
+  color: var(--deep-rose, #c89099);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clases-clear-btn:hover {
+  background: rgba(232, 180, 184, 0.08);
+}
+
+/* ── Week Navigation ── */
+.clases-week-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.clases-nav-arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 180, 184, 0.3);
+  background: #fff;
+  color: var(--charcoal);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.clases-nav-arrow:hover {
+  background: rgba(232, 180, 184, 0.1);
+  border-color: var(--primary-rose);
+}
+
+.clases-week-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  flex: 1;
+  gap: 0.3rem;
+}
+
+.clases-day-header {
+  text-align: center;
+  padding: 0.5rem 0.3rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.clases-day-header.today {
+  background: rgba(232, 180, 184, 0.12);
+}
+
+.clases-day-label {
+  display: block;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #8a7a7a;
+}
+
+.clases-day-header.today .clases-day-label {
+  color: var(--deep-rose, #c89099);
+}
+
+.clases-day-date {
+  display: block;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-top: 0.1rem;
+}
+
+.clases-day-header.today .clases-day-date {
+  color: var(--deep-rose);
+}
+
+.clases-today-btn {
+  display: block;
+  margin: 0 auto 1rem;
+  padding: 0.35rem 1rem;
+  border-radius: 20px;
+  border: none;
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.clases-today-btn:hover {
+  background: var(--deep-rose);
+}
+
+.clases-range-label {
+  text-align: center;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-top: 1.5rem;
+}
+
+/* ── Grid ── */
+.clases-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  align-items: start;
+}
+
+.clases-day-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 80px;
+}
+
+.clases-empty-day {
+  text-align: center;
+  padding: 2rem 0;
+  color: #ddd;
+  font-size: 0.9rem;
+}
+
+.clases-loading {
+  text-align: center;
+  padding: 4rem 0;
+  font-family: "Figtree", sans-serif;
+  color: var(--deep-rose);
+  font-size: 0.9rem;
+}
+
+/* ── Card ── */
+.clases-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #f0e8e9;
+  padding: 0.9rem;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.clases-card:hover {
+  box-shadow: 0 4px 16px rgba(200, 144, 153, 0.1);
+  transform: translateY(-1px);
+}
+
+.clases-card.reserved {
+  border-color: var(--primary-rose, #e8b4b8);
+  background: rgba(232, 180, 184, 0.04);
+}
+
+.clases-card.full {
+  opacity: 0.6;
+}
+
+.clases-card-status {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+}
+
+.clases-card-name {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin: 0 0 0.25rem;
+  padding-right: 1rem;
+}
+
+.clases-card-tipo {
+  display: inline-block;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.55rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 0.12rem 0.45rem;
+  border-radius: 12px;
+  margin-bottom: 0.4rem;
+}
+
+.cl-tipo-bungee {
+  background: #fce4ec;
+  color: #c62828;
+}
+.cl-tipo-yoga {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.cl-tipo-pilates {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+.cl-tipo-funcional {
+  background: #fff3e0;
+  color: #e65100;
+}
+.cl-tipo-otro {
+  background: #f3e5f5;
+  color: #6a1b9a;
+}
+
+.clases-card-instructor {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.78rem;
+  color: #8a7a7a;
+  margin: 0 0 0.5rem;
+}
+
+.clases-card-details {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.72rem;
+  color: #8a7a7a;
+  margin-bottom: 0.3rem;
+}
+
+.clases-card-details svg {
+  font-size: 0.65rem;
+  margin-right: 0.15rem;
+}
+
+.clases-card-cupos {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.7rem;
+  color: #8a7a7a;
+  margin-bottom: 0.6rem;
+}
+
+.clases-card-cupos svg {
+  font-size: 0.65rem;
+  margin-right: 0.15rem;
+}
+
+/* ── Buttons ── */
+.clases-btn {
+  display: block;
+  width: 100%;
+  padding: 0.45rem;
+  border-radius: 8px;
+  border: none;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+  letter-spacing: 0.3px;
+}
+
+.clases-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.clases-btn-book {
+  background: var(--primary-rose, #e8b4b8);
+  color: #fff;
+}
+
+.clases-btn-book:hover:not(:disabled) {
+  background: var(--deep-rose, #c89099);
+}
+
+.clases-btn-cancel {
+  background: transparent;
+  border: 1px solid rgba(232, 180, 184, 0.4);
+  color: var(--deep-rose, #c89099);
+}
+
+.clases-btn-cancel:hover:not(:disabled) {
+  background: rgba(232, 180, 184, 0.08);
+}
+
+.clases-full-label {
+  display: block;
+  text-align: center;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #ef5350;
+  padding: 0.4rem 0;
+}
+
+.clases-no-book {
+  display: block;
+  text-align: center;
+  font-family: "Figtree", sans-serif;
+  font-size: 0.68rem;
+  color: #aaa;
+  padding: 0.4rem 0;
+}
+
+/* ── Login Modal ── */
+.clases-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: clFadeIn 0.25s ease;
+}
+
+@keyframes clFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.clases-modal {
+  background: #fff;
+  border-radius: 22px;
+  padding: 3rem 2.5rem;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(44, 32, 32, 0.15);
+  border: 1px solid rgba(232, 180, 184, 0.1);
+  animation: clModalPop 0.3s ease;
+}
+
+@keyframes clModalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.clases-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  color: #bbb;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.clases-modal-close:hover {
+  color: var(--charcoal);
+}
+
+.clases-modal-icon {
+  display: block;
+  width: 100px;
+  margin: 0 auto 1.2rem;
+}
+
+.clases-modal h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.7rem;
+  font-weight: 300;
+  color: var(--charcoal);
+  margin: 0 0 0.6rem;
+}
+
+.clases-modal p {
+  font-family: "Figtree", sans-serif;
+  font-size: 0.88rem;
+  color: #8a7a7a;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.clases-modal-btn {
+  display: inline-block;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: none;
+  border-radius: 30px;
+  background: var(--primary-rose);
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 1.5rem;
+}
+
+.clases-modal-btn:hover {
+  background: var(--deep-rose);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 144, 153, 0.3);
+}
+
+.clases-modal-register {
+  margin-top: 0.8rem !important;
+  font-size: 0.8rem !important;
+}
+
+.clases-modal-register a {
+  color: var(--deep-rose);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.clases-modal-register a:hover {
+  text-decoration: underline;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .clases-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .clases-week-days {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Hide last 3 day headers on tablet - show scrollable */
+  .clases-day-header:nth-child(n + 5),
+  .clases-day-col:nth-child(n + 5) {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .clases-container {
+    padding: 1.2rem 0.8rem 3rem;
+  }
+
+  .clases-title {
+    font-size: 1.5rem;
+  }
+
+  .clases-header {
+    flex-direction: column;
+  }
+
+  .clases-filters {
+    flex-direction: column;
+  }
+
+  .clases-search-wrap {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .clases-select {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .clases-clear-btn {
+    width: 100%;
+  }
+
+  .clases-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .clases-week-days {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .clases-day-header:nth-child(n + 3),
+  .clases-day-col:nth-child(n + 3) {
+    display: none;
+  }
+
+  .clases-nav-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 0.7rem;
+  }
+}
