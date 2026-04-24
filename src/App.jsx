@@ -20,6 +20,7 @@ import InstructorCalendario from "./pages/Instructor/InstructorCalendario";
 import InstructorAsistencia from "./pages/Instructor/InstructorAsistencia";
 import InstructorObservaciones from "./pages/Instructor/InstructorObservaciones";
 import InstructorEstadisticas from "./pages/Instructor/InstructorEstadisticas";
+import InstructorNotificaciones from "./pages/Instructor/InstructorNotificaciones";
 import {
   RequireCompleteProfile,
   RequireIncompleteProfile,
@@ -68,6 +69,7 @@ function App() {
           <Route path="asistencia" element={<InstructorAsistencia />} />
           <Route path="observaciones" element={<InstructorObservaciones />} />
           <Route path="estadisticas" element={<InstructorEstadisticas />} />
+          <Route path="notificaciones" element={<InstructorNotificaciones />} />
         </Route>
       </Routes>
     </RequireCompleteProfile>

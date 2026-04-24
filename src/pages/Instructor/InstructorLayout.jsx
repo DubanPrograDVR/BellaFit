@@ -1,4 +1,5 @@
 import {
+  faBell,
   faCalendarDays,
   faChartBar,
   faClipboardCheck,
@@ -13,8 +14,13 @@ import "./InstructorLayout.css";
 const instructorNav = [
   { to: "/instructor", label: "Calendario", icon: faCalendarDays, end: true },
   { to: "/instructor/asistencia", label: "Asistencia", icon: faClipboardCheck },
-  { to: "/instructor/observaciones", label: "Observaciones", icon: faNoteSticky },
+  {
+    to: "/instructor/observaciones",
+    label: "Observaciones",
+    icon: faNoteSticky,
+  },
   { to: "/instructor/estadisticas", label: "Estadísticas", icon: faChartBar },
+  { to: "/instructor/notificaciones", label: "Notificaciones", icon: faBell },
 ];
 
 export default function InstructorLayout() {

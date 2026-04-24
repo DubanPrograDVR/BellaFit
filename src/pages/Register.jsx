@@ -288,6 +288,9 @@ export default function Register() {
                   value={form.fecha_nacimiento}
                   onChange={handleChange}
                 />
+                <span className="register-field-hint">
+                  🎂 Ingresa tu fecha real para recibir beneficios de cumpleaños
+                </span>
               </div>
             </div>
 

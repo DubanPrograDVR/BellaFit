@@ -98,7 +98,12 @@ export default function CompleteProfile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!form.rut.trim() || !form.fecha_nacimiento || !form.telefono.trim() || !form.direccion.trim()) {
+    if (
+      !form.rut.trim() ||
+      !form.fecha_nacimiento ||
+      !form.telefono.trim() ||
+      !form.direccion.trim()
+    ) {
       setError("Por favor completa todos los campos");
       return;
     }
@@ -159,7 +164,7 @@ export default function CompleteProfile() {
         <h1>Completa tu Perfil</h1>
         <p className="complete-subtitle">
           Para continuar en BellaFit necesitamos algunos datos adicionales.
-          Esta información es obligatoria y solo se solicita una vez.
+          Todos los datos deben ser reales para acceder a beneficios exclusivos.
         </p>
         <div className="complete-line" />
 
@@ -178,7 +183,9 @@ export default function CompleteProfile() {
                 className={rutError ? "input-error" : ""}
                 maxLength={12}
               />
-              {rutError && <span className="complete-field-error">{rutError}</span>}
+              {rutError && (
+                <span className="complete-field-error">{rutError}</span>
+              )}
               {rutChecking && (
                 <span className="complete-field-hint">Verificando RUT…</span>
               )}
@@ -192,6 +199,9 @@ export default function CompleteProfile() {
                 value={form.fecha_nacimiento}
                 onChange={handleChange}
               />
+              <span className="complete-field-hint">
+                🎂 Ingresa tu fecha real para recibir beneficios de cumpleaños
+              </span>
             </div>
           </div>
 
@@ -224,7 +234,10 @@ export default function CompleteProfile() {
 
           {error && <p className="complete-error">{error}</p>}
 
-          <button type="submit" className="complete-submit" disabled={loading || !!rutError}>
+          <button
+            type="submit"
+            className="complete-submit"
+            disabled={loading || !!rutError}>
             {loading ? "Guardando..." : "Completar Perfil"}
           </button>
         </form>
