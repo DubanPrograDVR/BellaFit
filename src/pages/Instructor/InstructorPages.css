@@ -177,6 +177,53 @@
 }
 
 /* ── Calendario ── */
+.inst-accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  background: #fff;
+  border: 1px solid #f0e8e9;
+  border-radius: 14px;
+  padding: 1rem 1.15rem;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    box-shadow 0.2s,
+    border-color 0.2s;
+}
+
+.inst-accordion-trigger:hover {
+  box-shadow: 0 4px 16px rgba(200, 144, 153, 0.08);
+  border-color: #ead7da;
+}
+
+.inst-accordion-trigger--hero {
+  flex: 1;
+}
+
+.inst-accordion-trigger .inst-title,
+.inst-accordion-trigger .inst-subtitle {
+  pointer-events: none;
+}
+
+.inst-accordion-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(232, 180, 184, 0.12);
+  color: var(--deep-rose, #c89099);
+  flex-shrink: 0;
+}
+
+.inst-accordion-content {
+  margin-top: 1rem;
+}
+
 .inst-grupo {
   margin-bottom: 1.5rem;
 }
@@ -671,6 +718,19 @@
     width: 100%;
     justify-content: flex-end;
   }
+}
+
+/* ── Próximas clases ── */
+.inst-proximas-section {
+  margin-top: 2rem;
+}
+
+.inst-proximas-title {
+  margin: 0 0 0.3rem;
+}
+
+.inst-proximas-section .inst-subtitle {
+  margin: 0;
 }
 
 /* ══════════════════════════════════════

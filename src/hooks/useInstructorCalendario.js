@@ -55,9 +55,26 @@ export function useInstructorCalendario() {
   };
 
   // Agrupar por fecha
-  const hoy = new Date().toISOString().split("T")[0];
-  const manana = new Date(Date.now() + 86400000).toISOString().split("T")[0];
-  const en7Dias = new Date(Date.now() + 7 * 86400000)
+  const hoyDate = new Date();
+  const hoy = hoyDate.toISOString().split("T")[0];
+  const manana = new Date(hoyDate.getTime() + 86400000)
+    .toISOString()
+    .split("T")[0];
+  const en7Dias = new Date(hoyDate.getTime() + 7 * 86400000)
+    .toISOString()
+    .split("T")[0];
+  const inicioProximoMes = new Date(
+    hoyDate.getFullYear(),
+    hoyDate.getMonth() + 1,
+    1,
+  )
+    .toISOString()
+    .split("T")[0];
+  const finProximoMes = new Date(
+    hoyDate.getFullYear(),
+    hoyDate.getMonth() + 2,
+    0,
+  )
     .toISOString()
     .split("T")[0];
 
@@ -66,15 +83,18 @@ export function useInstructorCalendario() {
       ? schedules
       : schedules.filter((s) => s.classes?.tipo === filterTipo);
 
-  const grupos = [
+  const gruposSemana = [
     { label: "Hoy", items: filtered.filter((s) => s.fecha === hoy) },
     { label: "Mañana", items: filtered.filter((s) => s.fecha === manana) },
     {
       label: "Próximos 7 días",
       items: filtered.filter((s) => s.fecha > manana && s.fecha <= en7Dias),
     },
-    { label: "Más adelante", items: filtered.filter((s) => s.fecha > en7Dias) },
   ].filter((g) => g.items.length > 0);
+
+  const proximasMes = filtered.filter(
+    (s) => s.fecha >= inicioProximoMes && s.fecha <= finProximoMes,
+  );
 
   const tipos = [
     ...new Set(schedules.map((s) => s.classes?.tipo).filter(Boolean)),
@@ -82,7 +102,7 @@ export function useInstructorCalendario() {
 
   return {
     loading,
-    grupos,
+    gruposSemana,
     tipos,
     filterTipo,
     setFilterTipo,
@@ -90,5 +110,6 @@ export function useInstructorCalendario() {
     toggleExpand,
     reservations,
     loadingReservations,
+    proximasMes,
   };
 }
