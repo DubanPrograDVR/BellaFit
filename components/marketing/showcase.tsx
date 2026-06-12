@@ -17,7 +17,7 @@ export function Showcase() {
       </div>
       <div className={styles.image}>
         <Image
-          src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1100&q=80"
+          src="/images/showcase.png"
           alt="Alumnas entrenando en el estudio BellaFit"
           fill
           sizes="(max-width: 900px) 100vw, 50vw"

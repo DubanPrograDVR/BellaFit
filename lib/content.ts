@@ -176,48 +176,42 @@ export const galleryPhotos: GalleryPhoto[] = [
     label: "Estudio Principal",
     category: "Bungee Fitness",
     span: "tall",
-    image:
-      "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=900&q=80",
+    image: "/images/gallery-studio.png",
   },
   {
     id: 2,
     label: "Zona de Equipamiento",
     category: "Equipamiento",
     span: "normal",
-    image:
-      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=700&q=80",
+    image: "/images/gallery-equipment.png",
   },
   {
     id: 3,
     label: "Área de Bienvenida",
     category: "Recepción",
     span: "normal",
-    image:
-      "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=700&q=80",
+    image: "/images/gallery-reception.png",
   },
   {
     id: 4,
     label: "Sala Multiusos",
     category: "Clases Grupales",
     span: "wide",
-    image:
-      "https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=1100&q=80",
+    image: "/images/gallery-class.png",
   },
   {
     id: 5,
     label: "Rincón Wellness",
     category: "Bienestar",
     span: "normal",
-    image:
-      "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=700&q=80",
+    image: "/images/gallery-wellness.png",
   },
   {
     id: 6,
     label: "Tienda BellaFit",
     category: "Tienda",
     span: "tall",
-    image:
-      "https://images.unsplash.com/photo-1483721310020-03333e577078?w=700&q=80",
+    image: "/images/gallery-shop.png",
   },
 ];
 
