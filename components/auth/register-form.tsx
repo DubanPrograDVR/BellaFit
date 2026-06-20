@@ -2,8 +2,11 @@
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/lib/hooks/useAuth";
+import { createUserProfile } from "@/lib/services/firestore";
 import styles from "./auth-forms.module.css";
 
 const INITIAL = {
@@ -50,6 +53,9 @@ export function validateTelefono(tel: string): boolean {
 }
 
 export function RegisterForm() {
+  const router = useRouter();
+  const { register, loading } = useAuth();
+
   const [form, setForm] = useState(INITIAL);
   const [error, setError] = useState("");
   const [rutError, setRutError] = useState("");
@@ -79,7 +85,7 @@ export function RegisterForm() {
     if (error) setError("");
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     const empty = Object.values(form).some((v) => !v.trim());
@@ -106,7 +112,24 @@ export function RegisterForm() {
       return;
     }
     setError("");
-    // El registro real se conecta en la fase de funcionalidad
+
+    const result = await register(form.email, form.password, form.nombre, form.telefono);
+    
+    if (result.success) {
+      // Create user profile in Firestore
+      const user = result.user;
+      if (user) {
+        await createUserProfile(user.uid, {
+          email: form.email,
+          displayName: form.nombre,
+          phoneNumber: form.telefono,
+          role: 'user',
+        });
+      }
+      router.push("/perfil");
+    } else {
+      setError(result.error || "Error al crear la cuenta");
+    }
   };
 
   return (
@@ -123,6 +146,7 @@ export function RegisterForm() {
             onChange={handleChange}
             autoComplete="name"
             className={styles.input}
+            disabled={loading}
           />
         </div>
 
@@ -138,6 +162,7 @@ export function RegisterForm() {
               onChange={handleRutChange}
               maxLength={12}
               className={`${styles.input} ${rutError ? styles.inputError : ""}`}
+              disabled={loading}
             />
             {rutError ? (
               <span className={styles.fieldError}>{rutError}</span>
@@ -152,6 +177,7 @@ export function RegisterForm() {
               value={form.fecha_nacimiento}
               onChange={handleChange}
               className={styles.input}
+              disabled={loading}
             />
             <span className={styles.hint}>
               Ingresa tu fecha real para recibir beneficios de cumpleaños
@@ -172,6 +198,7 @@ export function RegisterForm() {
               autoComplete="tel"
               maxLength={15}
               className={styles.input}
+              disabled={loading}
             />
             <span className={styles.hint}>Ej: +56 9 1234 5678</span>
           </div>
@@ -186,6 +213,7 @@ export function RegisterForm() {
               onChange={handleChange}
               autoComplete="street-address"
               className={styles.input}
+              disabled={loading}
             />
           </div>
         </div>
@@ -201,6 +229,7 @@ export function RegisterForm() {
             onChange={handleChange}
             autoComplete="email"
             className={styles.input}
+            disabled={loading}
           />
         </div>
 
@@ -217,11 +246,13 @@ export function RegisterForm() {
                 onChange={handleChange}
                 autoComplete="new-password"
                 className={styles.input}
+                disabled={loading}
               />
               <button
                 type="button"
                 className={styles.eyeBtn}
                 onClick={() => setShowPassword((v) => !v)}
+                disabled={loading}
                 aria-label={
                   showPassword ? "Ocultar contraseña" : "Mostrar contraseña"
                 }
@@ -242,11 +273,13 @@ export function RegisterForm() {
                 onChange={handleChange}
                 autoComplete="new-password"
                 className={styles.input}
+                disabled={loading}
               />
               <button
                 type="button"
                 className={styles.eyeBtn}
                 onClick={() => setShowConfirmPassword((v) => !v)}
+                disabled={loading}
                 aria-label={
                   showConfirmPassword
                     ? "Ocultar contraseña"
@@ -265,8 +298,8 @@ export function RegisterForm() {
 
         {error ? <p className={styles.error}>{error}</p> : null}
 
-        <Button type="submit" fullWidth size="lg" disabled={!!rutError}>
-          Crear Cuenta
+        <Button type="submit" fullWidth size="lg" disabled={!!rutError || loading}>
+          {loading ? "Creando cuenta..." : "Crear Cuenta"}
         </Button>
       </form>
 

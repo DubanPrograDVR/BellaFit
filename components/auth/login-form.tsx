@@ -2,8 +2,10 @@
 
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/lib/hooks/useAuth";
 import styles from "./auth-forms.module.css";
 
 function GoogleIcon() {
@@ -30,37 +32,47 @@ function GoogleIcon() {
 }
 
 export function LoginForm() {
-  const [identifier, setIdentifier] = useState("");
+  const router = useRouter();
+  const { login, loading, error: authError } = useAuth();
+  
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!identifier.trim() || !password) {
+    if (!email.trim() || !password) {
       setError("Por favor completa todos los campos");
       return;
     }
     setError("");
-    // La autenticación real se conecta en la fase de funcionalidad
+
+    const result = await login(email, password);
+    if (result.success) {
+      router.push("/perfil");
+    } else {
+      setError(result.error || "Error al iniciar sesión");
+    }
   };
 
   return (
     <>
       <form onSubmit={handleSubmit} className={styles.form} noValidate>
         <div className={styles.field}>
-          <label htmlFor="identifier">Usuario o Email</label>
+          <label htmlFor="email">Email</label>
           <input
-            id="identifier"
-            type="text"
-            placeholder="Tu nombre de usuario o email"
-            value={identifier}
+            id="email"
+            type="email"
+            placeholder="tu@email.com"
+            value={email}
             onChange={(e) => {
-              setIdentifier(e.target.value);
+              setEmail(e.target.value);
               if (error) setError("");
             }}
-            autoComplete="username"
+            autoComplete="email"
             className={styles.input}
+            disabled={loading}
           />
         </div>
 
@@ -78,6 +90,7 @@ export function LoginForm() {
               }}
               autoComplete="current-password"
               className={styles.input}
+              disabled={loading}
             />
             <button
               type="button"
@@ -98,8 +111,8 @@ export function LoginForm() {
 
         {error ? <p className={styles.error}>{error}</p> : null}
 
-        <Button type="submit" fullWidth size="lg">
-          Ingresar
+        <Button type="submit" fullWidth size="lg" disabled={loading}>
+          {loading ? "Ingresando..." : "Ingresar"}
         </Button>
       </form>
 
