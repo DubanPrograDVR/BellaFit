@@ -13,9 +13,9 @@ export default function PerfilPage() {
     <main className={styles.main}>
       <Navbar />
       <PageHeader
+        eyebrow="Área personal"
         title="Mi Perfil"
         description="Gestiona tu información, compras, pagos y configuración"
-        subtitle="Bienvenida a tu área personal"
       />
 
       <div className={styles.container}>

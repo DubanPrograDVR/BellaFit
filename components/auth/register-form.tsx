@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/lib/hooks/useAuth";
+import { auth } from "@/lib/firebase";
 import { createUserProfile } from "@/lib/services/firestore";
 import styles from "./auth-forms.module.css";
 
@@ -116,10 +117,10 @@ export function RegisterForm() {
     const result = await register(form.email, form.password, form.nombre, form.telefono);
     
     if (result.success) {
-      // Create user profile in Firestore
-      const user = result.user;
-      if (user) {
-        await createUserProfile(user.uid, {
+      // auth.currentUser is set immediately after registration
+      const currentUser = auth.currentUser;
+      if (currentUser) {
+        await createUserProfile(currentUser.uid, {
           email: form.email,
           displayName: form.nombre,
           phoneNumber: form.telefono,

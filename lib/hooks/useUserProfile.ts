@@ -31,7 +31,7 @@ export function useUserProfile(): UseUserProfileReturn {
       const result = await getUserProfile(user.uid);
 
       if (result.success) {
-        setProfile(result.user);
+        setProfile(result.user ?? null);
       } else {
         setError(result.error);
       }
